@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head></h:head>
+<h:body>
+<ui:composition>
+<h:form>
+    <p:menu toggleable="true" style="margin-top:20px;">
+        <p:submenu label="Ögrenci İşlemleri">
+            <p:menuitem value="Öğrenci Kayıt" 		url="#" icon="ui-icon-disk"/>
+            <p:menuitem value="Öğrenci Düzenle" 	url="#" icon="ui-icon-pencil"/>
+            <p:menuitem value="Öğrenci Ödeme" 		url="#" icon="ui-icon-home"/>
+            <p:menuitem value="Öğrenci İzinleri" 	url="#" icon="ui-icon-home"/>
+        </p:submenu>
+        <p:submenu label="Personel İşlemleri">
+            <p:menuitem value="Personel Kayıt" 	 url="#" icon="ui-icon-disk"/>
+            <p:menuitem value="Personel Düzenle" url="#" icon="ui-icon-pencil"/>
+        </p:submenu>
+         <p:submenu label="Oda İşlemleri">
+            <p:menuitem value="Oda Ekle" 	url="#" icon="ui-icon-star"/>
+            <p:menuitem value="Oda Düzenle" url="#" icon="ui-icon-home"/>
+        </p:submenu>
+        <p:submenu label="Diğer İşlemler">
+            <p:menuitem value="Yurt Bilgileri"  url="#" icon="ui-icon-home"/>
+            <p:menuitem value="Yurt Düzenle"	url="#" icon="ui-icon-pencil"/>
+            <p:menuitem value="Ayarlar" 		url="#" icon="ui-icon-star"/>
+        </p:submenu>
+    </p:menu>
+</h:form>
+
+</ui:composition>
+</h:body>
+</html>
