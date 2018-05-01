@@ -4,8 +4,10 @@ package com.deniz.controller;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import com.deniz.model.YoneticiCRUD;
+import com.deniz.session.YonetimSession;
 
 @ManagedBean
 public class YoneticiBean {
@@ -73,22 +75,39 @@ public class YoneticiBean {
 	
 	// FONKSİYONLAR BAŞLANGIÇ
 	
-	public void yoneticiGiris() 
+	public String yoneticiGiris() 
 	{
 		String durum = YoneticiCRUD.yoneticiGiris(yoneticiId, yoneticiSifre);
 		if(durum.equals("var"))
 		{
-			FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Bulundu"));
+			HttpSession session = YonetimSession.getSession();
+			session.setAttribute("yoneticiId", yoneticiId);
+			return "anasayfa.jsf?faces-redirect=true";
 		}
 		else if(durum.equals("yok"))
 		{
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Kullanıcı Bulunamadı."));
+			return "index.jsf";
 		}
 		else 
 		{
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Beklenilmeyen bir hata ile Karşılaşıldı."));
+			return "index.jsf";
 		}
 			
+	}
+	
+	public String sessionKontrol()
+	{
+		HttpSession session = YonetimSession.getSession();
+		if(session.getAttribute("yoneticiId")==null)
+		{
+			return "sessionyok";
+		}
+		else
+		{
+			return "sessionvar";
+		}
 	}
 	
 	
