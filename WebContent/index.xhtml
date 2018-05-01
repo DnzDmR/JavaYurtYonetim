@@ -6,22 +6,18 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head>
-
+<h:outputStylesheet library="css" name="sablon.css" />
 </h:head> 
 <body> 
-
-<ui:composition template="template/anasablon.xhtml">
-
-		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
-
-		<ui:define name="icerik">
+ 
 		
 		<h:form id="girisForm">
-			<p:panel header="Yönetici Giriş Paneli" style="margin-top:20px;" >
-				
-				<p:panelGrid columns="2">
+			<p:panel header="Yönetici Giriş Paneli"  style="margin-top:auto; width:475px; margin-left:auto; margin-right:auto;" >
+				<p:panelGrid columns="2" layout="grid">
 				<p:outputLabel value="Yönetici ID" />
- 				<p:inputText value="#{yoneticiBean.yoneticiId}" required="true" requiredMessage="ID boş geçilemez."/>
+ 				<p:inputText value="#{yoneticiBean.yoneticiId}" required="true" requiredMessage="ID boş geçilemez.">
+ 				<p:keyFilter regEx="/[\d]/"/>
+ 				</p:inputText>
  				<p:outputLabel value="Yönetici Şifre" />
 				<p:password value="#{yoneticiBean.yoneticiSifre}" required="true" requiredMessage="Şifre boş geçilemez." />
 				<p:outputLabel />
@@ -29,15 +25,11 @@
 				</p:panelGrid>
 				<p:messages/>
 			</p:panel>
-		
 			
 		</h:form>
 		 
 
-		
-		</ui:define>
-</ui:composition>
-		
+ 
 
 </body> 
 </html>

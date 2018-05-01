@@ -10,9 +10,9 @@
 <h:body>
 <ui:composition>
 <h:form>
-    <p:menu toggleable="true" style="margin-top:20px;">
+    <p:menu toggleable="true" styleClass="top20">
         <p:submenu label="Ögrenci İşlemleri">
-            <p:menuitem value="Öğrenci Kayıt" 		url="#" icon="ui-icon-disk"/>
+            <p:menuitem value="Öğrenci Kayıt" 		url="ogrencikayit.jsf" icon="ui-icon-disk"/>
             <p:menuitem value="Öğrenci Düzenle" 	url="#" icon="ui-icon-pencil"/>
             <p:menuitem value="Öğrenci Ödeme" 		url="#" icon="ui-icon-home"/>
             <p:menuitem value="Öğrenci İzinleri" 	url="#" icon="ui-icon-home"/>
@@ -22,6 +22,7 @@
             <p:menuitem value="Personel Düzenle" url="#" icon="ui-icon-pencil"/>
         </p:submenu>
          <p:submenu label="Oda İşlemleri">
+         	<p:menuitem value="Oda Listele" url="odalistele.jsf" icon="ui-icon-home"/>
             <p:menuitem value="Oda Ekle" 	url="#" icon="ui-icon-star"/>
             <p:menuitem value="Oda Düzenle" url="#" icon="ui-icon-home"/>
         </p:submenu>

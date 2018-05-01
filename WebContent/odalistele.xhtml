@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		
+		
+		
+		<h:form id="form">
+	 	 <p:dataList value="#{odaBean.odaListele()}" var="row" type="unordered" itemType="none" paginator="false" rows="10" styleClass="top20">
+        <f:facet name="header">
+            Yurt Oda Listesi
+        </f:facet>
+        <p:commandLink update=":form:odaDetay" oncomplete="PF('odaDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+            <f:setPropertyActionListener value="#{row}" target="#{odaBean.secilenOda}" />
+            <h:outputText value="#{row.odaId}, #{row.odaYatakSayisi}" />
+        </p:commandLink>
+        <h:outputText value="Oda No : #{row.odaId}" style="display:inline-block"/>
+    </p:dataList>
+	 	
+	 	
+	 	 <p:dialog header="Oda Bilgi" widgetVar="odaDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:outputPanel id="odaDetay" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty odaBean.secilenOda}" columnClasses="label,value">
+                 
+ 
+                <h:outputText value="Oda numarası :" />
+                <h:outputText value="#{odaBean.secilenOda.odaId}" />
+ 
+                <h:outputText value="Yatak Sayısı:" />
+                <h:outputText value="#{odaBean.secilenOda.odaYatakSayisi}" />
+                
+                <h:outputText value="Balkon Durumu" />
+                <h:outputText value="#{odaBean.secilenOda.odaBalkonDurumu==1?'var':'yok'}" />
+                
+                <h:outputText value="Fiyat Bilgisi" />
+                <h:outputText value="#{odaBean.secilenOda.odaFiyatBilgisi} TL" />
+                
+                <h:outputText value="Genişlik" />
+                <h:outputText value="#{odaBean.secilenOda.odaGenislik} &#x33A1; " />
+                
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+	 	</h:form>
+		
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>

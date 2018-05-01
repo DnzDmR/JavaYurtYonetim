@@ -14,7 +14,7 @@ public class YoneticiCRUD {
 		PreparedStatement ps=null;
 		try {
 			conn =DatabaseConnection.getConnection();
-			ps = conn.prepareStatement("Select * from YONETICIGIRIS_V where YONETICI_ID=? and YONETICI_SIFRE=?");
+			ps = conn.prepareStatement("Select * from YP_YONETICIGIRIS_V where YONETICI_ID=? and YONETICI_SIFRE=?");
 			ps.setInt(1, yoneticiId);
 			ps.setString(2, yoneticiSifre);
 			ResultSet rs = ps.executeQuery();

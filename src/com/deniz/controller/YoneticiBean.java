@@ -1,6 +1,8 @@
 package com.deniz.controller;
 
  
+import java.io.IOException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -97,17 +99,23 @@ public class YoneticiBean {
 			
 	}
 	
-	public String sessionKontrol()
+	public void sessionKontrol()
 	{
 		HttpSession session = YonetimSession.getSession();
 		if(session.getAttribute("yoneticiId")==null)
 		{
-			return "sessionyok";
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+				} catch (IOException e) { System.out.println("hata -->>"+e.getMessage());	}
 		}
-		else
-		{
-			return "sessionvar";
-		}
+		 
+	}
+	
+	
+	public String sessionDestroy()
+	{
+		YonetimSession.sessionDestroy();
+		return "index.jsf?faces-redirect=true";
 	}
 	
 	

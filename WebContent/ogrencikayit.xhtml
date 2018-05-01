@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		
+		<h:form >
+		<p:panel header="Öğrenci Kayıt Formu" styleClass="top20">
+			
+			<p:panelGrid columns="2">
+				
+							
+					<p:outputLabel value="Oda No" />
+					<p:inputText maxlength="11" required="true" requiredMessage="bo" >  
+					<p:keyFilter regEx="/[\d]/"/>
+ 					</p:inputText>
+ 					
+					<p:outputLabel value="Öğrenci TC" />
+					<p:inputText maxlength="11" >  
+					<p:keyFilter regEx="/[\d]/"/>
+ 					</p:inputText>
+					
+					
+					<p:outputLabel value="Öğrenci Ad" />
+					<p:inputText />
+					
+					
+					<p:outputLabel value="Öğrenci Soyad" />
+					<p:inputText />
+					
+					
+					<p:outputLabel value="Öğrenci Adres" />
+					<p:inputTextarea rows="1" cols="23" />
+					
+					
+					<p:outputLabel value="Öğrenci Doğum Tarihi" />
+					<p:inputText />
+					
+					
+					<p:outputLabel value="Öğrenci Cep No" />
+					<p:inputText maxlength="11" >  
+					<p:keyFilter regEx="/[\d]/"/>
+ 					</p:inputText>
+					
+					
+					<p:outputLabel value="Öğrenci Veli Ad" />
+					<p:inputText />
+					
+					
+					<p:outputLabel value="Öğrenci Veli Cep No" />
+					<p:inputText />
+					
+					
+					<p:outputLabel value="Sınıf" />
+					<p:inputText />
+					
+					
+					<p:outputLabel value="Üniversite" />
+					<p:selectOneMenu value="#{universiteBean.secilenUniversiteId}" style="width:300px;"  > 
+					<f:selectItem itemLabel="seciniz" />
+					<f:selectItems value="#{universiteBean.universiteCek()}" var="row" itemLabel="#{row.universiteAd}" itemValue="#{row.universiteId}" />
+					<p:ajax event="change" listener="#{universiteBean.universiteDegisim()}" update="fakulteList" />
+					</p:selectOneMenu>
+					
+					
+					<p:outputLabel value="Fakülte" />
+					<p:selectOneMenu value="#{universiteBean.secilenFakulteId}"  id="fakulteList" style="width:300px;" > 
+					<f:selectItem itemLabel="seciniz" />
+					<f:selectItems value="#{universiteBean.fakulteList}" var="row" itemLabel="#{row.fakulteAd}" itemValue="#{row.fakulteId}" />
+					<p:ajax event="change" listener="#{universiteBean.fakulteDegisim()}" update="bolumList" />
+					</p:selectOneMenu>
+					
+					
+					<p:outputLabel value="Bölüm" />
+					<p:selectOneMenu value="#{universiteBean.secilenBolumId}" id="bolumList"  style="width:300px;"> 
+					<f:selectItem  itemLabel="seciniz" />
+					<f:selectItems value="#{universiteBean.bolumList}" var="row" itemLabel="#{row.bolumAd}" itemValue="#{row.bolumId}" />
+					</p:selectOneMenu>
+		
+					<p:outputPanel />
+					<p:commandButton value="KAYIT YAP"  />	
+			
+			</p:panelGrid>
+			<p:messages/>
+		
+		</p:panel>
+		</h:form>
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>
