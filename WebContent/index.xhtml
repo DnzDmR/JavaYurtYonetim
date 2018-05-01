@@ -16,8 +16,23 @@
 
 		<ui:define name="icerik">
 		
-		
- 
+		<h:form id="girisForm">
+			<p:panel header="Yönetici Giriş Paneli" style="margin-top:20px;" >
+				
+				<p:panelGrid columns="2">
+				<p:outputLabel value="Yönetici ID" />
+ 				<p:inputText required="true" requiredMessage="ID boş geçilemez." />
+ 				<p:outputLabel value="Yönetici Şifre" />
+				<p:password required="true" requiredMessage="Şifre boş geçilemez." />
+				<p:outputLabel />
+				<p:commandButton value="TIKLA" update="girisForm" />
+				</p:panelGrid>
+				<p:messages></p:messages>
+			</p:panel>
+							
+			
+		</h:form>
+		 
 
 		
 		</ui:define>
