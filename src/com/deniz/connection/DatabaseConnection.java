@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 
  public class DatabaseConnection {
 
-	public Connection getConnection()
+	public static Connection getConnection()
 	{
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
