@@ -41,6 +41,9 @@
                 <h:outputText value="Yatak Sayısı:" />
                 <h:outputText value="#{odaBean.secilenOda.odaYatakSayisi}" />
                 
+                <h:outputText value="Boş Yer:" />
+                <h:outputText value="#{odaBean.secilenOda.odaMevcudu}" />
+                
                 <h:outputText value="Balkon Durumu" />
                 <h:outputText value="#{odaBean.secilenOda.odaBalkonDurumu==1?'var':'yok'}" />
                 
@@ -49,6 +52,9 @@
                 
                 <h:outputText value="Genişlik" />
                 <h:outputText value="#{odaBean.secilenOda.odaGenislik} &#x33A1; " />
+                
+           
+                
                 
             </p:panelGrid>
         </p:outputPanel>

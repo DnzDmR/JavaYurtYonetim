@@ -18,9 +18,18 @@ public class OdaBean {
 	private int odaGenislik;
 	
 	private OdaBean secilenOda;
+	private int odaMevcudu;
 	
 	
 	
+	
+ 
+	public int getOdaMevcudu() {
+		return odaMevcudu;
+	}
+	public void setOdaMevcudu(int odaMevcudu) {
+		this.odaMevcudu = odaMevcudu;
+	}
 	public OdaBean getSecilenOda() {
 		return secilenOda;
 	}
@@ -71,6 +80,7 @@ public class OdaBean {
 			this.odaGenislik=nesne.odaGenislik;
 			this.odaId=nesne.odaId;
 			this.odaYatakSayisi=nesne.odaYatakSayisi;
+			this.odaMevcudu=nesne.odaMevcudu;
 		}
 		
 		return OdaCRUD.odaListele();
