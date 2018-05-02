@@ -15,55 +15,63 @@
 		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
 		<ui:define name="icerik">
 		
-		<h:form >
+		<h:form id="kayitForm" >
 		<p:panel header="Öğrenci Kayıt Formu" styleClass="top20">
 			
 			<p:panelGrid columns="2">
 				
 							
 					<p:outputLabel value="Oda No" />
-					<p:inputText maxlength="11" required="true" requiredMessage="bo" >  
-					<p:keyFilter regEx="/[\d]/"/>
- 					</p:inputText>
+					<p:selectOneMenu value="#{odaBean.odaId}"   > 
+					<f:selectItem itemLabel="seciniz" />
+					<f:selectItems value="#{odaBean.bosOdaListele()}" var="row" itemLabel="#{row.odaId}" itemValue="#{row.odaId}" />
+					</p:selectOneMenu>
+					
  					
 					<p:outputLabel value="Öğrenci TC" />
-					<p:inputText maxlength="11" >  
+					<p:inputText maxlength="11" required="true" requiredMessage="TC boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
-					<p:outputLabel value="Öğrenci Ad" />
-					<p:inputText />
+					<p:outputLabel value="Öğrenci Ad"   />
+					<p:inputText required="true" requiredMessage="Ad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Soyad" />
-					<p:inputText />
+					<p:inputText required="true" requiredMessage="Soyad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Adres" />
-					<p:inputTextarea rows="1" cols="23" />
+					<p:inputTextarea rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Doğum Tarihi" />
-					<p:inputText />
+					<p:inputText required="true" requiredMessage="doğum tarihi boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Cep No" />
-					<p:inputText maxlength="11" >  
+					<p:inputText maxlength="11" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
 					<p:outputLabel value="Öğrenci Veli Ad" />
-					<p:inputText />
+					<p:inputText required="true" requiredMessage="veli ad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Veli Cep No" />
-					<p:inputText />
+					<p:inputText required="true" requiredMessage="Veli cep no boş geçilemez."/>
 					
 					
 					<p:outputLabel value="Sınıf" />
-					<p:inputText />
+					<p:selectOneMenu>
+						<f:selectItem itemValue="0" itemLabel="Hazırlık" />
+						<f:selectItem itemValue="1" itemLabel="1" />
+						<f:selectItem itemValue="2" itemLabel="2" />
+						<f:selectItem itemValue="3" itemLabel="3" />
+						<f:selectItem itemValue="4" itemLabel="4" />
+					</p:selectOneMenu>
 					
 					
 					<p:outputLabel value="Üniversite" />
@@ -89,7 +97,7 @@
 					</p:selectOneMenu>
 		
 					<p:outputPanel />
-					<p:commandButton value="KAYIT YAP"  />	
+					<p:commandButton value="KAYIT YAP"  update="kayitForm" />	
 			
 			</p:panelGrid>
 			<p:messages/>

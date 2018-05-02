@@ -85,4 +85,10 @@ public class OdaBean {
 		
 		return OdaCRUD.odaListele();
 	}
+	
+	
+	public ArrayList<OdaBean> bosOdaListele()
+	{
+		return OdaCRUD.bosOdaGetir();
+	}
 }
