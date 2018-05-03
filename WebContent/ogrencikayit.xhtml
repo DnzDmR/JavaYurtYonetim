@@ -22,50 +22,51 @@
 				
 							
 					<p:outputLabel value="Oda No" />
-					<p:selectOneMenu value="#{odaBean.odaId}"   > 
+					<p:selectOneMenu value="#{ogrenciBean.ogrenciOdaNo}"   > 
 					<f:selectItem itemLabel="seciniz" />
 					<f:selectItems value="#{odaBean.bosOdaListele()}" var="row" itemLabel="#{row.odaId}" itemValue="#{row.odaId}" />
 					</p:selectOneMenu>
 					
  					
 					<p:outputLabel value="Öğrenci TC" />
-					<p:inputText maxlength="11" required="true" requiredMessage="TC boş geçilemez." >  
+					<p:inputText value="#{ogrenciBean.ogrenciTc}" maxlength="11" required="true" requiredMessage="TC boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
 					<p:outputLabel value="Öğrenci Ad"   />
-					<p:inputText required="true" requiredMessage="Ad boş geçilemez." />
+					<p:inputText value="#{ogrenciBean.ogrenciAd}" required="true" requiredMessage="Ad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Soyad" />
-					<p:inputText required="true" requiredMessage="Soyad boş geçilemez." />
+					<p:inputText value="#{ogrenciBean.ogrenciSoyad}" required="true" requiredMessage="Soyad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Adres" />
-					<p:inputTextarea rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
+					<p:inputTextarea value="#{ogrenciBean.ogrenciAdres}" rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
 					
 					
-					<p:outputLabel value="Öğrenci Doğum Tarihi" />
-					<p:inputText required="true" requiredMessage="doğum tarihi boş geçilemez." />
+					 <p:outputLabel for="mask" value="Doğum Tarihi:" />
+       				 <p:calendar id="mask" value="#{ogrenciBean.tarih}" pattern="dd/MM/yyyy" mask="true" />
+ 
 					
 					
 					<p:outputLabel value="Öğrenci Cep No" />
-					<p:inputText maxlength="11" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
+					<p:inputText value="#{ogrenciBean.ogrenciCepNo}" maxlength="11" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
 					<p:outputLabel value="Öğrenci Veli Ad" />
-					<p:inputText required="true" requiredMessage="veli ad boş geçilemez." />
+					<p:inputText value="#{ogrenciBean.ogrenciVeliAd}" required="true" requiredMessage="veli ad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Veli Cep No" />
-					<p:inputText required="true" requiredMessage="Veli cep no boş geçilemez."/>
+					<p:inputText value="#{ogrenciBean.ogrenciVeliCepNo}" required="true" requiredMessage="Veli cep no boş geçilemez."/>
 					
 					
 					<p:outputLabel value="Sınıf" />
-					<p:selectOneMenu>
+					<p:selectOneMenu value="#{ogrenciBean.ogrenciSinif}">
 						<f:selectItem itemValue="0" itemLabel="Hazırlık" />
 						<f:selectItem itemValue="1" itemLabel="1" />
 						<f:selectItem itemValue="2" itemLabel="2" />
@@ -75,29 +76,29 @@
 					
 					
 					<p:outputLabel value="Üniversite" />
-					<p:selectOneMenu value="#{universiteBean.secilenUniversiteId}" style="width:300px;"  > 
+					<p:selectOneMenu value="#{ogrenciBean.secilenUniversiteId}" style="width:300px;"  > 
 					<f:selectItem itemLabel="seciniz" />
 					<f:selectItems value="#{universiteBean.universiteCek()}" var="row" itemLabel="#{row.universiteAd}" itemValue="#{row.universiteId}" />
-					<p:ajax event="change" listener="#{universiteBean.universiteDegisim()}" update="fakulteList" />
+					<p:ajax event="change" listener="#{ogrenciBean.universiteDegisim()}" update="fakulteList" />
 					</p:selectOneMenu>
 					
 					
 					<p:outputLabel value="Fakülte" />
-					<p:selectOneMenu value="#{universiteBean.secilenFakulteId}"  id="fakulteList" style="width:300px;" > 
+					<p:selectOneMenu value="#{ogrenciBean.secilenFakulteId}"  id="fakulteList" style="width:300px;" > 
 					<f:selectItem itemLabel="seciniz" />
-					<f:selectItems value="#{universiteBean.fakulteList}" var="row" itemLabel="#{row.fakulteAd}" itemValue="#{row.fakulteId}" />
-					<p:ajax event="change" listener="#{universiteBean.fakulteDegisim()}" update="bolumList" />
+					<f:selectItems value="#{ogrenciBean.fakulteList}" var="row" itemLabel="#{row.fakulteAd}" itemValue="#{row.fakulteId}" />
+					<p:ajax event="change" listener="#{ogrenciBean.fakulteDegisim}" update="bolumList" />
 					</p:selectOneMenu>
 					
 					
 					<p:outputLabel value="Bölüm" />
-					<p:selectOneMenu value="#{universiteBean.secilenBolumId}" id="bolumList"  style="width:300px;"> 
+					<p:selectOneMenu value="#{ogrenciBean.secilenBolumId}" id="bolumList"  style="width:300px;"> 
 					<f:selectItem  itemLabel="seciniz" />
-					<f:selectItems value="#{universiteBean.bolumList}" var="row" itemLabel="#{row.bolumAd}" itemValue="#{row.bolumId}" />
+					<f:selectItems value="#{ogrenciBean.bolumList}" var="row" itemLabel="#{row.bolumAd}" itemValue="#{row.bolumId}" />
 					</p:selectOneMenu>
 		
 					<p:outputPanel />
-					<p:commandButton value="KAYIT YAP"  update="kayitForm" />	
+					<p:commandButton value="KAYIT YAP" action="#{ogrenciBean.ogrenciKayit}"  update="kayitForm" />	
 			
 			</p:panelGrid>
 			<p:messages/>
