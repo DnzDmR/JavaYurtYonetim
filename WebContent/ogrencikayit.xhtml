@@ -35,15 +35,15 @@
 					
 					
 					<p:outputLabel value="Öğrenci Ad"   />
-					<p:inputText value="#{ogrenciBean.ogrenciAd}" required="true" requiredMessage="Ad boş geçilemez." />
+					<p:inputText value="#{ogrenciBean.ogrenciAd}" maxlength="20" required="true" requiredMessage="Ad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Soyad" />
-					<p:inputText value="#{ogrenciBean.ogrenciSoyad}" required="true" requiredMessage="Soyad boş geçilemez." />
+					<p:inputText value="#{ogrenciBean.ogrenciSoyad}" maxlength="20" required="true" requiredMessage="Soyad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Adres" />
-					<p:inputTextarea value="#{ogrenciBean.ogrenciAdres}" rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
+					<p:inputTextarea value="#{ogrenciBean.ogrenciAdres}" maxlength="50"  rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
 					
 					
 					 <p:outputLabel for="mask" value="Doğum Tarihi:" />
@@ -52,17 +52,19 @@
 					
 					
 					<p:outputLabel value="Öğrenci Cep No" />
-					<p:inputText value="#{ogrenciBean.ogrenciCepNo}" maxlength="11" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
+					<p:inputText value="#{ogrenciBean.ogrenciCepNo}" maxlength="12" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
 					<p:outputLabel value="Öğrenci Veli Ad" />
-					<p:inputText value="#{ogrenciBean.ogrenciVeliAd}" required="true" requiredMessage="veli ad boş geçilemez." />
+					<p:inputText value="#{ogrenciBean.ogrenciVeliAd}" maxlength="20" required="true" requiredMessage="veli ad boş geçilemez." />
 					
 					
 					<p:outputLabel value="Öğrenci Veli Cep No" />
-					<p:inputText value="#{ogrenciBean.ogrenciVeliCepNo}" required="true" requiredMessage="Veli cep no boş geçilemez."/>
+					<p:inputText value="#{ogrenciBean.ogrenciVeliCepNo}" maxlength="11" required="true" requiredMessage="Veli cep no boş geçilemez.">
+					<p:keyFilter regEx="/[\d]/"/>
+					</p:inputText>
 					
 					
 					<p:outputLabel value="Sınıf" />
