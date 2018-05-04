@@ -3,15 +3,12 @@ package com.deniz.model;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.deniz.connection.DatabaseConnection;
 import com.deniz.controller.OgrenciBean;
 
 import oracle.jdbc.OracleTypes;
-import oracle.jdbc.driver.OracleConnection;
 
 public class OgrenciCRUD {
 	
@@ -148,6 +145,44 @@ public class OgrenciCRUD {
 			return liste;
 			
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return null;}
+	}
+	
+	
+	
+	public static OgrenciBean ogrenciCek(int ogrenciId)
+	{
+		Connection conn=null;
+		CallableStatement cs =null;
+		try{
+			conn =DatabaseConnection.getConnection();
+			cs=conn.prepareCall("{call OGRENCICEK(?,?)}");
+			cs.setInt(1, ogrenciId);
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
+			cs.executeQuery();
+			ResultSet rs = (ResultSet) cs.getObject(2);
+			OgrenciBean ogrenci = new OgrenciBean();
+			
+			if(rs.next())
+			{
+				ogrenci.setOgrenciId(rs.getInt("OGRENCI_ID"));
+				ogrenci.setOgrenciTc(rs.getLong("OGRENCI_TC"));
+				ogrenci.setOgrenciAd(rs.getString("OGRENCI_AD"));
+				ogrenci.setOgrenciSoyad(rs.getString("OGRENCI_SOYAD"));
+				ogrenci.setOgrenciAdres(rs.getString("OGRENCI_ADRES"));
+				ogrenci.setOgrenciDogumTarihi(rs.getDate("OGRENCI_DOGUM_TARIHI"));
+				ogrenci.setOgrenciCepNo(rs.getLong("OGRENCI_CEPNO"));
+				ogrenci.setOgrenciVeliAd(rs.getString("OGRENCI_VELI_AD"));
+				ogrenci.setOgrenciVeliCepNo(rs.getLong("OGRENCI_VELI_CEPNO"));
+				ogrenci.setOgrenciSinif(rs.getInt("OGRENCI_SINIF"));
+				ogrenci.setOgrenciKayitDurum(rs.getInt("KAYIT_DURUM"));
+			}
+			
+				conn.close();
+				cs.close();
+				
+				return ogrenci;
+				
+			}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return null;}
 	}
 	
 

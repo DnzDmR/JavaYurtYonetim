@@ -15,87 +15,15 @@
 		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
 		<ui:define name="icerik">
 		
-		<h:form id="aramaForm">
-		<p:panel header="Ögrenci Arama" styleClass="top20">
-			<p:panelGrid columns="2">
-			<p:inputText value="#{ogrenciBean.arananOgrenciAdi}" />
-			<p:commandButton value="Arama" action="#{ogrenciBean.ogrenciArama()}" update="aramaList" />
-			
-			</p:panelGrid>
-		</p:panel>
-		
-		
-		 <p:dataList value="#{ogrenciBean.arananOgrenciList}" id ="aramaList" var="row" type="unordered" itemType="none" paginator="false" rows="10" styleClass="top20">
-        <f:facet name="header">
-            Aranan Öğrenci Listesi
-        </f:facet>
-        <p:commandLink update=":aramaForm:aramaDetay" oncomplete="PF('aramaDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
-            <f:setPropertyActionListener value="#{row}" target="#{ogrenciBean.secilenOgrenci}" />
-            <h:outputText value="#{row.ogrenciAd}, #{row.ogrenciSoyad}" />
-         </p:commandLink>
-        <h:outputText value="#{row.ogrenciTc} #{row.ogrenciAd} #{row.ogrenciSoyad}" style="display:inline-block"/>
-    </p:dataList>
-	 	
-	 	
-	 	 <p:dialog header="Oda Bilgi" widgetVar="aramaDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
-        <p:outputPanel id="aramaDetay" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty ogrenciBean.secilenOgrenci}" columnClasses="label,value">
-                 
- 				<p:outputLabel value="TC"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciTc}"/>
-                
- 				<p:outputLabel value="Ad"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciAd}"/>
-           		
-           		<p:outputLabel value="Soyad"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciSoyad}"/>
-                
-                <p:outputLabel value="Adres"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciAdres}"/>
-                
-                <p:outputLabel value="Doğum Tarihi"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciDogumTarihi}"/>
-                
-                <p:outputLabel value="Cep No"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciCepNo}"/>
-                
-                <p:outputLabel value="Veli Ad"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciVeliAd}"/>
-                
-                <p:outputLabel value="Veli Cep No"/>
-                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciVeliCepNo}"/>
-                
-              
-           		<p:outputLabel value="" />
-				<p:commandButton value="DUZENLE" />
-			 
-            
-                
-            </p:panelGrid>
-			
-        </p:outputPanel>
-    </p:dialog>
-	 	</h:form>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		<h:form id="kayitForm" >
-		<p:panel header="Öğrenci Kayıt Formu" styleClass="top20" rendered="false">
+		<p:panel header="Öğrenci Bilgi Güncelleme Formu" styleClass="top20">
 			
 			<p:panelGrid columns="2">
 				
  					
 					<p:outputLabel value="Öğrenci TC" />
-					<p:inputText value="#{ogrenciBean.ogrenciTc}" maxlength="11" required="true" requiredMessage="TC boş geçilemez." >  
+					<p:inputText value="#{ogrenciBean.ogrenciTc}"  maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
+					<f:validateLength minimum="11" />  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
@@ -166,17 +94,14 @@
 					</p:selectOneMenu>
 		
 					<p:outputPanel />
-					<p:commandButton value="KAYIT YAP" action="#{ogrenciBean.ogrenciKayit}"  update="kayitForm" />	
+					<p:commandButton value="Güncelle" update="kayitForm" />	
 			
 			</p:panelGrid>
 			<p:messages/>
 		
 		</p:panel>
-		
-		
 		</h:form>
-	 
-		
+		 
 		</ui:define>
 </ui:composition>
 		

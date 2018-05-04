@@ -2,6 +2,7 @@ package com.deniz.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -331,4 +332,26 @@ public class OgrenciBean {
 	}
 	
 	 
+	public String ogrenciCek()   
+	{
+		Map<String,String> parametre =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		System.out.println(parametre.get("ogrenciId"));
+		OgrenciBean  ogrenci =OgrenciCRUD.ogrenciCek(Integer.parseInt(parametre.get("ogrenciId")));
+		
+		 this.ogrenciTc = ogrenci.ogrenciTc;
+		 this.ogrenciAd = ogrenci.ogrenciAd;
+		 this.ogrenciSoyad = ogrenci.ogrenciSoyad;
+		 this.ogrenciAdres = ogrenci.ogrenciAdres;
+		 this.ogrenciCepNo = ogrenci.ogrenciCepNo;
+		 this.ogrenciVeliAd =ogrenci.ogrenciVeliAd;
+		 this.ogrenciVeliCepNo = ogrenci.ogrenciVeliCepNo;
+		 this.tarih = ogrenci.ogrenciDogumTarihi;
+		 this.ogrenciSinif = ogrenci.ogrenciSinif;
+		 this.ogrenciKayitDurum = ogrenci.ogrenciKayitDurum;
+		
+		 return "ogrenciduzenle.jsf?faces-redirect=true";
+		
+ 	}
+	
+	
 }
