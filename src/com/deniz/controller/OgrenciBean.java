@@ -27,6 +27,7 @@ public class OgrenciBean {
 	private Integer ogrenciKayitDurum;
 	private Integer ogrenciOdaNo;
 	private Integer ogrenciSinif;
+	private Integer ogrenciBolumId;
 	
 	private String ogrenciAd;
 	private String ogrenciSoyad;
@@ -37,15 +38,22 @@ public class OgrenciBean {
  
 	private  ArrayList<FakulteBean> fakulteList;
 	private  ArrayList<BolumBean> bolumList;
+	private ArrayList<OgrenciBean> arananOgrenciList;
 	
 	private int secilenUniversiteId;
 	private int secilenFakulteId;
 	private int secilenBolumId;
 	
+ 	private java.util.Date tarih;
 	 
-	private java.util.Date tarih;
-	 
- 
+	private int kayitId;
+	private Date girisTarih;
+	private Date cikisTarih;
+	
+	private String arananOgrenciAdi;
+	private OgrenciBean secilenOgrenci;
+	
+	
 	
 	
 	 
@@ -53,9 +61,63 @@ public class OgrenciBean {
 	
 
 	
-	
 
-	
+	public ArrayList<OgrenciBean> getArananOgrenciList() {
+		return arananOgrenciList;
+	}
+
+	public void setArananOgrenciList(ArrayList<OgrenciBean> arananOgrenciList) {
+		this.arananOgrenciList = arananOgrenciList;
+	}
+
+	public String getArananOgrenciAdi() {
+		return arananOgrenciAdi;
+	}
+
+	public void setArananOgrenciAdi(String arananOgrenciAdi) {
+		this.arananOgrenciAdi = arananOgrenciAdi;
+	}
+
+	public OgrenciBean getSecilenOgrenci() {
+		return secilenOgrenci;
+	}
+
+	public void setSecilenOgrenci(OgrenciBean secilenOgrenci) {
+		this.secilenOgrenci = secilenOgrenci;
+	}
+
+	public int getKayitId() {
+		return kayitId;
+	}
+
+	public void setKayitId(int kayitId) {
+		this.kayitId = kayitId;
+	}
+
+	public Date getGirisTarih() {
+		return girisTarih;
+	}
+
+	public void setGirisTarih(Date girisTarih) {
+		this.girisTarih = girisTarih;
+	}
+
+	public Date getCikisTarih() {
+		return cikisTarih;
+	}
+
+	public void setCikisTarih(Date cikisTarih) {
+		this.cikisTarih = cikisTarih;
+	}
+
+	public Integer getOgrenciBolumId() {
+		return ogrenciBolumId;
+	}
+
+	public void setOgrenciBolumId(Integer ogrenciBolumId) {
+		this.ogrenciBolumId = ogrenciBolumId;
+	}
+
 	public Integer getOgrenciId() {
 		return ogrenciId;
 	}
@@ -235,6 +297,38 @@ public class OgrenciBean {
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Kayıt Başarısız"));
 		}
 	}
- 
+	
+	
+	
+	
+	public ArrayList<OgrenciBean> kayitBekleyenOgrenciler()
+	{
+		return OgrenciCRUD.kayitBekleyenOgrenciler();
+	}
+	
+	
 
+	public void ogrenciOdaKayit()
+	{
+ 
+		boolean valid =OgrenciCRUD.ogrenciOdaKayit(ogrenciId, ogrenciOdaNo);
+		
+		if(valid)
+		{
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Oda Kaydı Başarılı"));
+		}
+		else
+		{
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Oda Kaydı Başarısız"));
+		}
+		
+	}
+	
+	
+	public void ogrenciArama()
+	{
+		arananOgrenciList= OgrenciCRUD.ogrenciArama(arananOgrenciAdi);
+	}
+	
+	 
 }

@@ -1,5 +1,6 @@
 package com.deniz.model;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import com.deniz.connection.DatabaseConnection;
 import com.deniz.controller.BolumBean;
 import com.deniz.controller.OgrenciBean;
+
+import oracle.jdbc.OracleTypes;
 
 public class BolumCRUD {
 
@@ -40,6 +43,7 @@ public class BolumCRUD {
 				
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); return null;}
 	}
+
 	
 	
 	

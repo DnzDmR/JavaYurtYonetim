@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+			<h:form id="odaKayitForm">
+	 		<p:panel header="Öğrenci Oda Kayıt" styleClass="top20">
+	 			<p:panelGrid columns="2">
+	 			
+	 				
+	 				<p:outputLabel value="Bekleyen Öğrenci" />
+	 				<p:selectOneMenu value="#{ogrenciBean.ogrenciId}" required="true" requiredMessage="Öğrenci seçiniz">
+					<f:selectItem itemLabel="seciniz" />
+					<f:selectItems value="#{ogrenciBean.kayitBekleyenOgrenciler()}" var="row" itemLabel="#{row.ogrenciAd} #{row.ogrenciSoyad}" itemValue="#{row.ogrenciId}" />
+	 				</p:selectOneMenu>
+	 				
+	 				<p:outputLabel value="Boş Odalar:" />
+					<p:selectOneMenu value="#{ogrenciBean.ogrenciOdaNo}"  required="true" requiredMessage="Oda seçiniz">  > 
+					<f:selectItem itemLabel="seciniz" />
+					<f:selectItems value="#{odaBean.bosOdaListele()}" var="row" itemLabel="#{row.odaId}" itemValue="#{row.odaId}" />
+					</p:selectOneMenu>
+	 				
+	 				<p:outputLabel value="" />
+	 				<p:commandButton value="Oda Kayıt Tamamla" action="#{ogrenciBean.ogrenciOdaKayit}" update="odaKayitForm" />		
+	 			</p:panelGrid>
+	 			<p:messages />
+	 		</p:panel>
+	 	</h:form>
+		
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>
