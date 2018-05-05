@@ -28,7 +28,7 @@
 	 				<p:outputLabel value="Boş Odalar:" />
 					<p:selectOneMenu value="#{ogrenciBean.ogrenciOdaNo}"  required="true" requiredMessage="Oda seçiniz">  > 
 					<f:selectItem itemLabel="seciniz" />
-					<f:selectItems value="#{odaBean.bosOdaListele()}" var="row" itemLabel="#{row.odaId}" itemValue="#{row.odaId}" />
+					<f:selectItems value="#{odaBean.bosOdaListele()}" var="row" itemLabel="#{row.odaKod}" itemValue="#{row.odaId}" />
 					</p:selectOneMenu>
 	 				
 	 				<p:outputLabel value="" />

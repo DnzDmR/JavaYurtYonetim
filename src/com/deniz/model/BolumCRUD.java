@@ -1,6 +1,5 @@
 package com.deniz.model;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +7,7 @@ import java.util.ArrayList;
 
 import com.deniz.connection.DatabaseConnection;
 import com.deniz.controller.BolumBean;
-import com.deniz.controller.OgrenciBean;
 
-import oracle.jdbc.OracleTypes;
 
 public class BolumCRUD {
 
@@ -33,7 +30,7 @@ public class BolumCRUD {
 					BolumBean bolum = new BolumBean();
 					bolum.setBolumAd(rs.getString("BOLUM_AD"));
 					bolum.setBolumId(rs.getInt("BOLUM_ID"));
-					bolum.setDonemSayisi(rs.getInt("DONEM_SAYISI"));
+					bolum.setDonemSayisi(rs.getInt("YIL_SAYISI"));
 					bolum.setFakulteId(rs.getInt("FAKULTE_ID"));
 					liste.add(bolum);
 				}

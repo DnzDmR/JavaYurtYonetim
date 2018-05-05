@@ -15,7 +15,7 @@ public class YonetimSession {
 		HttpSession session = getSession();
 		if (session!=null) 
 		{
-			return session.getAttribute("yoneticiId").toString();
+			return session.getAttribute("yoneticiTc").toString();
 		}
 		else
 		{

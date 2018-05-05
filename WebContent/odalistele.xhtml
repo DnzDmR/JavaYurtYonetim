@@ -26,7 +26,7 @@
             <f:setPropertyActionListener value="#{row}" target="#{odaBean.secilenOda}" />
             <h:outputText value="#{row.odaId}, #{row.odaYatakSayisi}" />
         </p:commandLink>
-        <h:outputText value="Oda No : #{row.odaId}" style="display:inline-block"/>
+        <h:outputText value="Oda : #{row.odaKod}" style="display:inline-block"/>
     </p:dataList>
 	 	
 	 	
@@ -35,25 +35,26 @@
             <p:panelGrid  columns="2" rendered="#{not empty odaBean.secilenOda}" columnClasses="label,value">
                  
  
-                <h:outputText value="Oda numarası :" />
-                <h:outputText value="#{odaBean.secilenOda.odaId}" />
+                <p:outputLabel value="Oda" />
+                <p:outputLabel value="#{odaBean.secilenOda.odaKod}" />
  
-                <h:outputText value="Yatak Sayısı:" />
-                <h:outputText value="#{odaBean.secilenOda.odaYatakSayisi}" />
+                <p:outputLabel value="Yatak Sayısı" />
+                <p:outputLabel value="#{odaBean.secilenOda.odaYatakSayisi}" />
                 
-                <h:outputText value="Boş Yer:" />
-                <h:outputText value="#{odaBean.secilenOda.odaMevcudu}" />
+                <p:outputLabel value="Boş Yer" />
+                <p:outputLabel value="#{odaBean.secilenOda.odaMevcudu}" />
                 
-                <h:outputText value="Balkon Durumu" />
-                <h:outputText value="#{odaBean.secilenOda.odaBalkonDurumu==1?'var':'yok'}" />
+                <p:outputLabel value="Balkon Durumu" />
+                <p:outputLabel value="#{odaBean.secilenOda.odaBalkonDurumu==1?'var':'yok'}" />
                 
-                <h:outputText value="Fiyat Bilgisi" />
-                <h:outputText value="#{odaBean.secilenOda.odaFiyatBilgisi} TL" />
+                <p:outputLabel value="Fiyat Bilgisi" />
+                <p:outputLabel value="#{odaBean.secilenOda.odaFiyatBilgisi} TL" />
                 
-                <h:outputText value="Genişlik" />
-                <h:outputText value="#{odaBean.secilenOda.odaGenislik} &#x33A1; " />
+                <p:outputLabel value="Genişlik" />
+                <p:outputLabel value="#{odaBean.secilenOda.odaGenislik} &#x33A1; " />
                 
-           		
+           		<p:outputLabel />
+           		<p:commandButton value="DUZENLE" />
                 
                 
             </p:panelGrid>

@@ -1,33 +1,38 @@
 package com.deniz.model;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
  
 import com.deniz.connection.DatabaseConnection;
 
+import oracle.jdbc.OracleTypes;
+
 public class YoneticiCRUD {
 
-	public static String yoneticiGiris(Integer yoneticiId,String yoneticiSifre) 
+	public static String yoneticiGiris(Long yoneticiTc,String yoneticiSifre) 
 	{
 		Connection conn=null;
-		PreparedStatement ps=null;
+		CallableStatement cs=null;
 		try {
 			conn =DatabaseConnection.getConnection();
-			ps = conn.prepareStatement("Select * from YP_YONETICIGIRIS_V where YONETICI_ID=? and YONETICI_SIFRE=?");
-			ps.setInt(1, yoneticiId);
-			ps.setString(2, yoneticiSifre);
-			ResultSet rs = ps.executeQuery();
+			cs=conn.prepareCall("{call YONETICIGIRIS(?,?,?)}");
+			cs.setLong(1, yoneticiTc);
+			cs.setString(2, yoneticiSifre);
+			cs.registerOutParameter(3, OracleTypes.CURSOR);
+			cs.executeQuery();
+			ResultSet rs = (ResultSet) cs.getObject(3);
 			
 			if(rs.next())
 			{
-				ps.close();
+				cs.close();
 				conn.close();
 				return "var";
 			}
 			else
 			{
-				ps.close();
+				cs.close();
 				conn.close();
 				return "yok";
 			}
