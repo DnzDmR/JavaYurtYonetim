@@ -54,14 +54,21 @@ public class OgrenciBean {
 	private String arananOgrenciAdi;
 	private OgrenciBean secilenOgrenci;
 	
-	
-	
+	private boolean bolumDegistirme;
 	
 	 
 	
 	
 
 	
+
+	public boolean isBolumDegistirme() {
+		return bolumDegistirme;
+	}
+
+	public void setBolumDegistirme(boolean bolumDegistirme) {
+		this.bolumDegistirme = bolumDegistirme;
+	}
 
 	public ArrayList<OgrenciBean> getArananOgrenciList() {
 		return arananOgrenciList;
@@ -335,7 +342,6 @@ public class OgrenciBean {
 	public String ogrenciCek()   
 	{
 		Map<String,String> parametre =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		System.out.println(parametre.get("ogrenciId"));
 		OgrenciBean  ogrenci =OgrenciCRUD.ogrenciCek(Integer.parseInt(parametre.get("ogrenciId")));
 		
 		 this.ogrenciTc = ogrenci.ogrenciTc;
@@ -348,10 +354,47 @@ public class OgrenciBean {
 		 this.tarih = ogrenci.ogrenciDogumTarihi;
 		 this.ogrenciSinif = ogrenci.ogrenciSinif;
 		 this.ogrenciKayitDurum = ogrenci.ogrenciKayitDurum;
+		 this.ogrenciOdaNo=ogrenci.ogrenciOdaNo;
+		 this.ogrenciBolumId=ogrenci.ogrenciBolumId;
+		 this.ogrenciId =ogrenci.ogrenciId;
+		 this.ogrenciKayitDurum = ogrenci.ogrenciKayitDurum;
+		
 		
 		 return "ogrenciduzenle.jsf?faces-redirect=true";
 		
  	}
+	
+	
+	public void ogrenciGuncelle()
+	{
+		
+		java.util.Date utilDate = tarih;
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+	    this.ogrenciDogumTarihi=sqlDate;
+		
+		OgrenciBean ogrenci =this;
+		
+		if(ogrenci.secilenBolumId!=0)
+		{
+			System.out.println("BÖLÜM DEĞİŞTİRİLMİŞ");
+			this.ogrenciBolumId=secilenBolumId;
+		}
+		
+		
+		boolean valid =OgrenciCRUD.ogrenciGuncelle(ogrenci);
+		
+		if(valid)
+		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Güncelleme Başırılı"));
+		}
+		else
+		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Güncelleme Başarısız"));
+		}
+		
+		
+		
+	}
 	
 	
 }

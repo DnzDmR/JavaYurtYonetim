@@ -41,6 +41,10 @@
         <p:outputPanel id="aramaDetay" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty ogrenciBean.secilenOgrenci}" columnClasses="label,value">
                  
+                       
+                <p:outputLabel value="Oda No"/>
+                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciOdaNo}" />
+              
  				<p:outputLabel value="TC"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciTc}"/>
                 
@@ -64,8 +68,8 @@
                 
                 <p:outputLabel value="Veli Cep No"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciVeliCepNo}"/>
-                
-              
+          
+          
            		<p:outputLabel value="" />
 				<p:commandButton value="DUZENLE" action="#{ogrenciBean.ogrenciCek()}" >
 				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />

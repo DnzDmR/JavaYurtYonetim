@@ -20,6 +20,14 @@
 			
 			<p:panelGrid columns="2">
 				
+				
+					<p:outputLabel value="Oda No"   />
+ 					<p:selectOneMenu value="#{ogrenciBean.ogrenciOdaNo}"> 
+ 					<f:selectItems value="#{odaBean.bosOdaListele()}" var="row" itemLabel="#{row.odaId}" itemValue="#{row.odaId}"   />
+					</p:selectOneMenu>
+	 				
+					
+					
  					
 					<p:outputLabel value="Öğrenci TC" />
 					<p:inputText value="#{ogrenciBean.ogrenciTc}"  maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
@@ -70,31 +78,44 @@
 						<f:selectItem itemValue="4" itemLabel="4" />
 					</p:selectOneMenu>
 					
+			 
+					<p:outputLabel  value="Kayıt Durum"/>
+					<p:selectOneMenu value="#{ogrenciBean.ogrenciKayitDurum}">
+						<f:selectItem itemValue="0" itemLabel="Kayıt Dışı" />
+						<f:selectItem itemValue="1" itemLabel="Bekliyor" />
+						<f:selectItem itemValue="2" itemLabel="Kayıtlı"/>
+					</p:selectOneMenu>
 					
-					<p:outputLabel value="Üniversite" />
-					<p:selectOneMenu value="#{ogrenciBean.secilenUniversiteId}" style="width:300px;"  > 
+					
+					<p:outputLabel value="Bölüm Değiştirme" />
+					<p:inputSwitch value="#{ogrenciBean.bolumDegistirme}" offLabel="Kapalı" onLabel="Açık" immediate="false" >
+					<p:ajax event="change" update="kayitForm" />
+					</p:inputSwitch>
+					
+					<p:outputLabel value="Üniversite"  rendered="#{ogrenciBean.bolumDegistirme}" />
+					<p:selectOneMenu value="#{ogrenciBean.secilenUniversiteId}" style="width:300px;" rendered="#{ogrenciBean.bolumDegistirme}" > 
 					<f:selectItem itemLabel="seciniz" />
 					<f:selectItems value="#{universiteBean.universiteCek()}" var="row" itemLabel="#{row.universiteAd}" itemValue="#{row.universiteId}" />
 					<p:ajax event="change" listener="#{ogrenciBean.universiteDegisim()}" update="fakulteList" />
 					</p:selectOneMenu>
 					
 					
-					<p:outputLabel value="Fakülte" />
-					<p:selectOneMenu value="#{ogrenciBean.secilenFakulteId}"  id="fakulteList" style="width:300px;" > 
+					<p:outputLabel value="Fakülte" rendered="#{ogrenciBean.bolumDegistirme}" />
+					<p:selectOneMenu value="#{ogrenciBean.secilenFakulteId}"  id="fakulteList" style="width:300px;" rendered="#{ogrenciBean.bolumDegistirme}"> 
 					<f:selectItem itemLabel="seciniz" />
 					<f:selectItems value="#{ogrenciBean.fakulteList}" var="row" itemLabel="#{row.fakulteAd}" itemValue="#{row.fakulteId}" />
 					<p:ajax event="change" listener="#{ogrenciBean.fakulteDegisim}" update="bolumList" />
 					</p:selectOneMenu>
 					
 					
-					<p:outputLabel value="Bölüm" />
-					<p:selectOneMenu value="#{ogrenciBean.secilenBolumId}" id="bolumList"  style="width:300px;"> 
+					<p:outputLabel value="Bölüm" rendered="#{ogrenciBean.bolumDegistirme}" />
+					<p:selectOneMenu value="#{ogrenciBean.secilenBolumId}" id="bolumList"  style="width:300px;" rendered="#{ogrenciBean.bolumDegistirme}"> 
 					<f:selectItem  itemLabel="seciniz" />
 					<f:selectItems value="#{ogrenciBean.bolumList}" var="row" itemLabel="#{row.bolumAd}" itemValue="#{row.bolumId}" />
 					</p:selectOneMenu>
 		
 					<p:outputPanel />
-					<p:commandButton value="Güncelle" update="kayitForm" />	
+					<p:commandButton value="Güncelle" update="kayitForm"  action="#{ogrenciBean.ogrenciGuncelle}" />	
 			
 			</p:panelGrid>
 			<p:messages/>

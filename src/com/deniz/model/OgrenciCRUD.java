@@ -134,6 +134,7 @@ public class OgrenciCRUD {
 				ogrenci.setOgrenciVeliCepNo(rs.getLong("OGRENCI_VELI_CEPNO"));
 				ogrenci.setOgrenciSinif(rs.getInt("OGRENCI_SINIF"));
 				ogrenci.setOgrenciKayitDurum(rs.getInt("KAYIT_DURUM"));
+				ogrenci.setOgrenciOdaNo(rs.getInt("ODA_ID"));
 				
 				
 				liste.add(ogrenci);
@@ -175,6 +176,9 @@ public class OgrenciCRUD {
 				ogrenci.setOgrenciVeliCepNo(rs.getLong("OGRENCI_VELI_CEPNO"));
 				ogrenci.setOgrenciSinif(rs.getInt("OGRENCI_SINIF"));
 				ogrenci.setOgrenciKayitDurum(rs.getInt("KAYIT_DURUM"));
+				ogrenci.setOgrenciOdaNo(rs.getInt("ODA_ID"));
+				ogrenci.setOgrenciBolumId(rs.getInt("BOLUM_ID"));
+			 
 			}
 			
 				conn.close();
@@ -183,6 +187,38 @@ public class OgrenciCRUD {
 				return ogrenci;
 				
 			}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return null;}
+	}
+	
+	
+	public static boolean ogrenciGuncelle(OgrenciBean ogrenci)
+	{
+		Connection conn =null;
+		CallableStatement cs =null;
+		
+		try {
+			conn = DatabaseConnection.getConnection();
+			cs = conn.prepareCall("{call OGRENCIGUNCELLE(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+			cs.setInt(1, ogrenci.getOgrenciId());
+			cs.setLong(2, ogrenci.getOgrenciTc());
+			cs.setString(3, ogrenci.getOgrenciAd());
+			cs.setString(4, ogrenci.getOgrenciSoyad());
+			cs.setString(5, ogrenci.getOgrenciAdres());
+			cs.setDate(6, ogrenci.getOgrenciDogumTarihi());
+			cs.setLong(7, ogrenci.getOgrenciCepNo());
+			cs.setString(8, ogrenci.getOgrenciVeliAd());
+			cs.setLong(9,ogrenci.getOgrenciVeliCepNo());
+			cs.setInt(10, ogrenci.getOgrenciSinif());
+			cs.setInt(11, ogrenci.getOgrenciBolumId());
+			cs.setInt(12, ogrenci.getOgrenciKayitDurum());
+			cs.setInt(13, ogrenci.getOgrenciOdaNo());
+			
+			cs.executeQuery();
+			
+			cs.close();
+			conn.close();
+			
+			return true;
+		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false;}
 	}
 	
 
