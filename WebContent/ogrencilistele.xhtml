@@ -18,7 +18,7 @@
 		<h:form id="aramaForm">
 		<p:panel header="Ögrenci Arama" styleClass="top20">
 			<p:panelGrid columns="2">
-			<p:inputText value="#{ogrenciBean.arananOgrenciAdi}" />
+			<p:inputText value="#{ogrenciBean.arananOgrenciAdi}"  required="true" />
 			<p:commandButton value="Arama" action="#{ogrenciBean.ogrenciArama()}" update="aramaList" />
 			
 			</p:panelGrid>
@@ -69,6 +69,17 @@
                 <p:outputLabel value="Veli Cep No"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciVeliCepNo}"/>
           
+          
+                <p:outputLabel value="Üniversite"/>
+                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciUniversiteAd}"/>
+                
+                <p:outputLabel value="Fakülte"/>
+                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciFakulteAd}"/>
+                
+                <p:outputLabel value="Bölüm"/>
+                <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciBolumAd}"/>
+                
+                
           
            		<p:outputLabel value="" />
 				<p:commandButton value="DUZENLE" action="#{ogrenciBean.ogrenciCek()}" >

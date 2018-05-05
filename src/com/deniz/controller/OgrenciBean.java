@@ -33,6 +33,10 @@ public class OgrenciBean {
 	private String ogrenciAd;
 	private String ogrenciSoyad;
 	private String ogrenciAdres;
+	private String ogrenciFakulteAd;
+	private String ogrenciBolumAd;
+	private String ogrenciUniversiteAd;
+	
 	
 	private String ogrenciVeliAd;
 	private Date ogrenciDogumTarihi;
@@ -61,6 +65,30 @@ public class OgrenciBean {
 	
 
 	
+
+	public String getOgrenciFakulteAd() {
+		return ogrenciFakulteAd;
+	}
+
+	public void setOgrenciFakulteAd(String ogrenciFakulteAd) {
+		this.ogrenciFakulteAd = ogrenciFakulteAd;
+	}
+
+	public String getOgrenciBolumAd() {
+		return ogrenciBolumAd;
+	}
+
+	public void setOgrenciBolumAd(String ogrenciBolumAd) {
+		this.ogrenciBolumAd = ogrenciBolumAd;
+	}
+
+	public String getOgrenciUniversiteAd() {
+		return ogrenciUniversiteAd;
+	}
+
+	public void setOgrenciUniversiteAd(String ogrenciUniversiteAd) {
+		this.ogrenciUniversiteAd = ogrenciUniversiteAd;
+	}
 
 	public boolean isBolumDegistirme() {
 		return bolumDegistirme;
@@ -376,10 +404,8 @@ public class OgrenciBean {
 		
 		if(ogrenci.secilenBolumId!=0)
 		{
-			System.out.println("BÖLÜM DEĞİŞTİRİLMİŞ");
 			this.ogrenciBolumId=secilenBolumId;
 		}
-		
 		
 		boolean valid =OgrenciCRUD.ogrenciGuncelle(ogrenci);
 		

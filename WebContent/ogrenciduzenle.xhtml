@@ -40,6 +40,7 @@
 					<p:inputText value="#{ogrenciBean.ogrenciAd}" maxlength="20" required="true" requiredMessage="Ad boş geçilemez." />
 					
 					
+					
 					<p:outputLabel value="Öğrenci Soyad" />
 					<p:inputText value="#{ogrenciBean.ogrenciSoyad}" maxlength="20" required="true" requiredMessage="Soyad boş geçilemez." />
 					
@@ -66,6 +67,7 @@
 					<p:outputLabel value="Öğrenci Veli Cep No" />
 					<p:inputText value="#{ogrenciBean.ogrenciVeliCepNo}" maxlength="11" required="true" requiredMessage="Veli cep no boş geçilemez.">
 					<p:keyFilter regEx="/[\d]/"/>
+					<f:validateLength minimum="11" />
 					</p:inputText>
 					
 					

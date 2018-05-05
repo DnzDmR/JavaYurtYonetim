@@ -111,7 +111,7 @@ public class OgrenciCRUD {
 			
 			conn=DatabaseConnection.getConnection();
 			cs =conn.prepareCall("call OGRENCIARAMA(?,?)");
-			cs.setString(1, arananOgrenciAdi);
+			cs.setString(1, arananOgrenciAdi.toLowerCase());
 			cs.registerOutParameter(2, OracleTypes.CURSOR);
 
 			cs.executeQuery();
@@ -135,6 +135,10 @@ public class OgrenciCRUD {
 				ogrenci.setOgrenciSinif(rs.getInt("OGRENCI_SINIF"));
 				ogrenci.setOgrenciKayitDurum(rs.getInt("KAYIT_DURUM"));
 				ogrenci.setOgrenciOdaNo(rs.getInt("ODA_ID"));
+				ogrenci.setOgrenciFakulteAd(rs.getString("FAKULTE_AD"));
+				ogrenci.setOgrenciBolumAd(rs.getString("BOLUM_AD"));
+				ogrenci.setOgrenciUniversiteAd(rs.getString("UNIVERSITE_AD"));
+				
 				
 				
 				liste.add(ogrenci);
