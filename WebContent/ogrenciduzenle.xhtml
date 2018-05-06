@@ -31,8 +31,7 @@
  					
 					<p:outputLabel value="Öğrenci TC" />
 					<p:inputText value="#{ogrenciBean.ogrenciTc}"  maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
-					<f:validateLength minimum="11" />  
-					<p:keyFilter regEx="/[\d]/"/>
+ 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
@@ -55,7 +54,7 @@
 					
 					
 					<p:outputLabel value="Öğrenci Cep No" />
-					<p:inputText value="#{ogrenciBean.ogrenciCepNo}" maxlength="12" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
+					<p:inputText value="#{ogrenciBean.ogrenciCepNo}" maxlength="11" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
@@ -67,8 +66,7 @@
 					<p:outputLabel value="Öğrenci Veli Cep No" />
 					<p:inputText value="#{ogrenciBean.ogrenciVeliCepNo}" maxlength="11" required="true" requiredMessage="Veli cep no boş geçilemez.">
 					<p:keyFilter regEx="/[\d]/"/>
-					<f:validateLength minimum="11" />
-					</p:inputText>
+ 					</p:inputText>
 					
 					
 					<p:outputLabel value="Sınıf" />

@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head>
+<h:head> 
 
 </h:head> 
 <body> 
@@ -14,8 +14,8 @@
 
 		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
 		<ui:define name="icerik">
-		
-		<p:panel header="Kullanıcı Ayarları" styleClass="top20">
+		#{yoneticiBean.yoneticiCek()}
+		<p:panel header="Kullanıcı Bilgileri" styleClass="top20">
 			
 			<p:panelGrid columns="2">
 				<p:outputLabel  value="Tc" />
@@ -27,7 +27,7 @@
 				<p:outputLabel  value="Adres" />
 				<p:outputLabel  value="#{yoneticiBean.yoneticiAdres}" />
 				<p:outputLabel  value="Doğum Tarihi" />
-				<p:outputLabel  value="#{yoneticiBean.yoneticiAd}" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiDogumTarihi}" />
 				<p:outputLabel  value="Cep No" />
 				<p:outputLabel  value="#{yoneticiBean.yoneticiCepNo}" />
 				<p:outputLabel  value="Birim" />
@@ -35,8 +35,10 @@
 				<p:outputLabel  value="Maas" />
 				<p:outputLabel  value="#{yoneticiBean.yoneticiBirimMaas}" />
 		 	</p:panelGrid>
+		 	<br></br>
+		 	<p:outputLabel  value="Bu bilgiler yetkiye sahip bir kullanıcı tarafından güncellenebilir." style="color:green;"/>
 		 	
-		</p:panel>
+		</p:panel>  
 		
 		<h:form id="sifreForm">
 		 <p:panel header="Şifre Değiştir" styleClass="top20">

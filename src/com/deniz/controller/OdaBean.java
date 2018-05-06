@@ -133,11 +133,8 @@ public class OdaBean {
 
 	public void odaListele()
 	{
-		System.out.println("lololol");
 		arananOdaList= OdaCRUD.odaListele(arananOda);
 	 
-		
- 
 	}
 	
 	

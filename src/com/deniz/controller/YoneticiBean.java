@@ -287,11 +287,38 @@ public class YoneticiBean {
 		{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Mevcut Şifreniz Doğrulanamadı."));
 		}
-		 
-		
-			
-		
+	 	
 	}
+	
+	public void  yoneticiCek()
+	{
+		YoneticiBean ogrenci =YoneticiCRUD.yoneticiCek(Long.parseLong(YonetimSession.getYoneticiTc()));
+		this.yoneticiAd =ogrenci.yoneticiAd;
+		this.yoneticiSoyad =ogrenci.yoneticiSoyad;
+		this.yoneticiDogumTarihi =ogrenci.yoneticiDogumTarihi;
+		this.yoneticiAdres =ogrenci.yoneticiAdres;
+		this.yoneticiCepNo = ogrenci.yoneticiCepNo;
+		this.yoneticiBirimMaas= ogrenci.yoneticiBirimMaas;
+		this.yoneticiBirimAd = ogrenci.yoneticiBirimAd;
+		this.yoneticiTc=ogrenci.yoneticiTc;
+	}
+	
+	public void temizle()
+	{
+		this.yoneticiAd =null;
+		this.yoneticiSoyad =null;
+		this.yoneticiDogumTarihi =null;
+		this.yoneticiAdres =null;
+		this.yoneticiCepNo = null;
+		this.yoneticiBirimMaas= null;
+		this.yoneticiBirimAd =null;
+		this.yoneticiTc=null;
+		this.yoneticiSifre=null;
+	}
+	
+	
+	
+	
 	
 	
 	

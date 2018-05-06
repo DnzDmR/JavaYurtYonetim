@@ -160,6 +160,42 @@ public class YoneticiCRUD {
 			return true;
 		}catch(Exception e) {System.out.println("hata-->"+e.getMessage()); e.printStackTrace(); return false;}
 	}
+	
+	public static YoneticiBean yoneticiCek(Long yoneticiTc)
+	{
+		Connection conn =null;
+		CallableStatement cs =null;
+		try {
+				conn = DatabaseConnection.getConnection();
+				cs= conn.prepareCall("{call YONETICICEK(?,?)}");
+				cs.setLong(1,yoneticiTc);
+				cs.registerOutParameter(2, OracleTypes.CURSOR);
+				cs.executeQuery();
+				ResultSet rs = (ResultSet) cs.getObject(2);
+				YoneticiBean yonetici = new YoneticiBean();
+				
+				if(rs.next())
+				{
+					yonetici.setYoneticiAd(rs.getString("YONETICI_AD"));
+					yonetici.setYoneticiSoyad(rs.getString("YONETICI_SOYAD"));
+					yonetici.setYoneticiTc(rs.getLong("YONETICI_TC"));
+					yonetici.setYoneticiAdres(rs.getString("YONETICI_ADRES"));
+					yonetici.setYoneticiId(rs.getInt("YONETICI_ID"));
+					yonetici.setYoneticiDogumTarihi(rs.getDate("YONETICI_DOGUM_TARIHI"));
+					yonetici.setYoneticiCepNo(rs.getLong("YONETICI_CEPNO"));
+					yonetici.setYoneticiSifre(rs.getString("YONETICI_SIFRE"));
+					yonetici.setYoneticiYetki(rs.getInt("YONETICI_YETKI"));
+					yonetici.setYoneticiBirimId(rs.getInt("BIRIM_ID"));
+					yonetici.setYoneticiBirimAd(rs.getString("BIRIM_AD"));
+					yonetici.setYoneticiBirimMaas(rs.getInt("BIRIM_MAAS"));
+				}
+					
+				cs.close();
+				conn.close();
+				
+			return yonetici;
+		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace();return null; }
+	}
 	 
 
 }

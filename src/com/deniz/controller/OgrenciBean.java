@@ -386,7 +386,7 @@ public class OgrenciBean {
 		 this.ogrenciBolumId=ogrenci.ogrenciBolumId;
 		 this.ogrenciId =ogrenci.ogrenciId;
 		 this.ogrenciKayitDurum = ogrenci.ogrenciKayitDurum;
-		
+		 
 		
 		 return "ogrenciduzenle.jsf?faces-redirect=true";
 		
@@ -420,6 +420,23 @@ public class OgrenciBean {
 		
 		
 		
+	}
+	
+	
+	public void temizle()
+	{
+		this.ogrenciTc=null;
+		this.ogrenciSoyad=null;
+		this.ogrenciAd=null;
+		this.ogrenciAdres=null;
+		this.ogrenciDogumTarihi=null;
+		this.tarih=null;
+		this.ogrenciCepNo=null;
+		this.ogrenciVeliCepNo=null;
+		this.ogrenciVeliAd=null;
+		this.ogrenciSinif=null;
+ 
+	
 	}
 	
 	

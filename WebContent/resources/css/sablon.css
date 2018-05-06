@@ -1,9 +1,9 @@
 body{background: #EEEEEE;}
 .ustmenu {height: auto; width: auto;}
 
-.solmenu {height: 500px; width: 250px;  float:left;}
+.solmenu {height: 500px; width: auto;  float:left;}
 
-.icerik { height: auto; width: 75%;   float: left;}
+.icerik { margin-left:20px; height: auto; width: 75%;   float: left;}
 
 
 .top20 {margin-top: 20px;}
