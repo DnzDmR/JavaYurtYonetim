@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		<h:form id="kayitForm">
+		<p:panel header="Yönetici Kayıt Formu" styleClass="top20">
+			<p:panelGrid columns="2">
+				
+				<p:outputLabel value="Yönetici TC" />
+				<p:inputText value="#{yoneticiBean.yoneticiTc}"   maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
+				<p:keyFilter regEx="/[\d]/"/>
+ 				</p:inputText>
+ 				
+ 				<p:outputLabel  value="Yönetici Ad"/>
+				<p:inputText value="#{yoneticiBean.yoneticiAd}" required="true" requiredMessage="Ad boş geçilemez." />
+				
+				<p:outputLabel  value="Yönetici Soyad"/>
+				<p:inputText value="#{yoneticiBean.yoneticiSoyad}" required="true" requiredMessage="Soyad boş geçilemez." />
+			
+				<p:outputLabel for="adres"  value="Yönetici Adres"/>
+				<p:inputText value="#{yoneticiBean.yoneticiAdres}" id="adres" required="true" requiredMessage="Adres boş geçilemez."/>
+				
+				
+				 <p:outputLabel for="mask" value="Doğum Tarihi" />
+       			 <p:calendar value="#{yoneticiBean.tarih}" id="mask"  pattern="dd/MM/yyyy" mask="true" required="true" requiredMessage="Doğum tarihi boş geçilemez" />
+			
+			
+				<p:outputLabel  value="Yönetici Cep No"/>
+				<p:inputText value="#{yoneticiBean.yoneticiCepNo}" required="true" requiredMessage="Cep No Boş geçilemez" > 
+				<p:keyFilter regEx="/[\d]/"/>
+				</p:inputText>
+				
+				<p:outputLabel  value="Yönetici Şifre"/>
+				<p:inputText  value="#{yoneticiBean.yoneticiSifre}" required="true" requiredMessage="Şifre boş geçilemez."/>
+		
+				<p:outputLabel  value="Yönetici Birim"/>
+				<p:selectOneMenu value="#{yoneticiBean.yoneticiBirimId}">
+					 <f:selectItems  value="#{yoneticiBean.birimListele()}" var="row" itemLabel="#{row.yoneticiBirimAd}" itemValue="#{row.yoneticiBirimId}" />
+				</p:selectOneMenu>
+				
+				
+				<p:outputLabel  value="Yönetici Yetki"/>
+				<p:selectOneMenu value="#{yoneticiBean.yoneticiYetki}">
+					<f:selectItem itemLabel="Hayır" itemValue="0" />
+					<f:selectItem itemLabel="Evet" itemValue="1" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel/>
+				<p:commandButton value="KAYDET" update="kayitForm" action="#{yoneticiBean.yoneticiKaydet}"/>
+				
+			</p:panelGrid>
+			<p:messages/>
+		</p:panel>
+		</h:form>
+		
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>

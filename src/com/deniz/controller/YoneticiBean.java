@@ -3,6 +3,7 @@ package com.deniz.controller;
  
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,13 +20,50 @@ public class YoneticiBean {
 	private Long yoneticiCepNo;
 	private Integer yoneticiId;
 	private Integer yoneticiYetki;
-	private Integer yoneticiBirimId;
+
 	private String yoneticiAd;
 	private String yoneticiSoyad;
 	private String yoneticiAdres;
 	private String yoneticiSifre;
 	private Date yoneticiDogumTarihi;
 	
+	private Integer yoneticiBirimId;
+	private String yoneticiBirimAd;
+	private Integer yoneticiBirimMaas;
+	
+	
+ 	private java.util.Date tarih;
+
+ 	
+ 	
+ 	
+ 	
+ 	
+
+	public Integer getYoneticiBirimMaas() {
+		return yoneticiBirimMaas;
+	}
+
+	public void setYoneticiBirimMaas(Integer yoneticiBirimMaas) {
+		this.yoneticiBirimMaas = yoneticiBirimMaas;
+	}
+
+	public String getYoneticiBirimAd() {
+		return yoneticiBirimAd;
+	}
+
+	public void setYoneticiBirimAd(String yoneticiBirimAd) {
+		this.yoneticiBirimAd = yoneticiBirimAd;
+	}
+
+
+	public java.util.Date getTarih() {
+		return tarih;
+	}
+
+	public void setTarih(java.util.Date tarih) {
+		this.tarih = tarih;
+	}
 
 	public Long getYoneticiTc() {
 		return yoneticiTc;
@@ -136,6 +174,38 @@ public class YoneticiBean {
 		}
 			
 	}
+	
+	public void yoneticiKaydet()
+	{
+		// Util Date olarak alınan doğum tarihi sql date olarak dönüştürüldü.
+				java.util.Date utilDate = tarih;
+			    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			    this.yoneticiDogumTarihi=sqlDate;
+		
+		YoneticiBean yonetici = this;
+		
+		boolean valid = YoneticiCRUD.yoneticiKaydet(yonetici);
+		
+		if(valid)
+		{
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Yönetici Kaydı Başarılı"));
+		}
+		else
+		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Yönetici Kaydı Başarısız"));
+		}
+		
+	}
+	
+	public ArrayList<YoneticiBean> birimListele()
+	{
+		return YoneticiCRUD.birimListele();
+	}
+	
+	
+	
+	
+	
 	
 	public void sessionKontrol()
 	{
