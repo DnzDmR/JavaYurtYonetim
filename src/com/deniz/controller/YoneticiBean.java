@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import com.deniz.model.YoneticiCRUD;
 import com.deniz.session.YonetimSession;
 
 @ManagedBean
+@SessionScoped
 public class YoneticiBean {
 	
 	private Long yoneticiTc;
@@ -34,37 +36,16 @@ public class YoneticiBean {
 	
  	private java.util.Date tarih;
 
+ 	private YoneticiBean secilenYonetici;
+ 	private String arananDeger;
+	private ArrayList<YoneticiBean> arananYoneticiList;
+
  	
  	
- 	
- 	
- 	
 
-	public Integer getYoneticiBirimMaas() {
-		return yoneticiBirimMaas;
-	}
-
-	public void setYoneticiBirimMaas(Integer yoneticiBirimMaas) {
-		this.yoneticiBirimMaas = yoneticiBirimMaas;
-	}
-
-	public String getYoneticiBirimAd() {
-		return yoneticiBirimAd;
-	}
-
-	public void setYoneticiBirimAd(String yoneticiBirimAd) {
-		this.yoneticiBirimAd = yoneticiBirimAd;
-	}
-
-
-	public java.util.Date getTarih() {
-		return tarih;
-	}
-
-	public void setTarih(java.util.Date tarih) {
-		this.tarih = tarih;
-	}
-
+	  
+	 
+	
 	public Long getYoneticiTc() {
 		return yoneticiTc;
 	}
@@ -95,14 +76,6 @@ public class YoneticiBean {
 
 	public void setYoneticiYetki(Integer yoneticiYetki) {
 		this.yoneticiYetki = yoneticiYetki;
-	}
-
-	public Integer getYoneticiBirimId() {
-		return yoneticiBirimId;
-	}
-
-	public void setYoneticiBirimId(Integer yoneticiBirimId) {
-		this.yoneticiBirimId = yoneticiBirimId;
 	}
 
 	public String getYoneticiAd() {
@@ -144,15 +117,70 @@ public class YoneticiBean {
 	public void setYoneticiDogumTarihi(Date yoneticiDogumTarihi) {
 		this.yoneticiDogumTarihi = yoneticiDogumTarihi;
 	}
+
+	public Integer getYoneticiBirimId() {
+		return yoneticiBirimId;
+	}
+
+	public void setYoneticiBirimId(Integer yoneticiBirimId) {
+		this.yoneticiBirimId = yoneticiBirimId;
+	}
+
+	public String getYoneticiBirimAd() {
+		return yoneticiBirimAd;
+	}
+
+	public void setYoneticiBirimAd(String yoneticiBirimAd) {
+		this.yoneticiBirimAd = yoneticiBirimAd;
+	}
+
+	public Integer getYoneticiBirimMaas() {
+		return yoneticiBirimMaas;
+	}
+
+	public void setYoneticiBirimMaas(Integer yoneticiBirimMaas) {
+		this.yoneticiBirimMaas = yoneticiBirimMaas;
+	}
+
+	public java.util.Date getTarih() {
+		return tarih;
+	}
+
+	public void setTarih(java.util.Date tarih) {
+		this.tarih = tarih;
+	}
+
+	public YoneticiBean getSecilenYonetici() {
+		return secilenYonetici;
+	}
+
+	public void setSecilenYonetici(YoneticiBean secilenYonetici) {
+		this.secilenYonetici = secilenYonetici;
+	}
+
+	public String getArananDeger() {
+		return arananDeger;
+	}
+
+	public void setArananDeger(String arananDeger) {
+		this.arananDeger = arananDeger;
+	}
+
+	public ArrayList<YoneticiBean> getArananYoneticiList() {
+		return arananYoneticiList;
+	}
+
+	public void setArananYoneticiList(ArrayList<YoneticiBean> arananYoneticiList) {
+		this.arananYoneticiList = arananYoneticiList;
+	}
+	
 	
 	
 
-
-	
 	
 	
 	// FONKSİYONLAR BAŞLANGIÇ
-	
+
 	public String yoneticiGiris() 
 	{
 		String durum = YoneticiCRUD.yoneticiGiris(yoneticiTc, yoneticiSifre);
@@ -203,7 +231,10 @@ public class YoneticiBean {
 	}
 	
 	
-	
+	public void yoneticiArama()
+	{
+		this.arananYoneticiList= YoneticiCRUD.yoneticiArama(arananDeger);
+	}
 	
 	
 	
@@ -225,6 +256,9 @@ public class YoneticiBean {
 		YonetimSession.sessionDestroy();
 		return "index.jsf?faces-redirect=true";
 	}
+	
+	
+	
 	
 	
 	

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		<h:form id="aramaForm">
+		<p:panel header="Yönetici Arama" styleClass="top20">
+			<p:panelGrid columns="2">
+			<p:inputText value="#{yoneticiBean.arananDeger}"  required="true" />
+			<p:commandButton value="Arama" action="#{yoneticiBean.yoneticiArama()}" update="aramaList" />
+			
+			</p:panelGrid>
+		</p:panel>
+		
+		
+		 <p:dataList value="#{yoneticiBean.arananYoneticiList}" id ="aramaList" var="row" type="unordered" itemType="none" paginator="false" rows="10" styleClass="top20">
+        <f:facet name="header">
+            Aranan Öğrenci Listesi
+        </f:facet>
+        <p:commandLink update=":aramaForm:aramaDetay" oncomplete="PF('aramaDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+            <f:setPropertyActionListener value="#{row}" target="#{yoneticiBean.secilenYonetici}" />
+            <h:outputText value="#{row.yoneticiAd}, #{row.yoneticiSoyad}" />
+         </p:commandLink>
+        <h:outputText value="#{row.yoneticiAd}, #{row.yoneticiSoyad}" style="display:inline-block"/>
+    </p:dataList>
+	 	
+	 	
+	 	 <p:dialog header="Yönetici Bilgi" widgetVar="aramaDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:outputPanel id="aramaDetay" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty yoneticiBean.secilenYonetici}" columnClasses="label,value">
+              
+                <p:outputLabel value="Çalıştığı Birim"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiBirimAd}" />
+                
+                <p:outputLabel value="TC"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiTc}" />
+              
+ 		 		<p:outputLabel value="Ad"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiAd}" />
+              
+ 		 		<p:outputLabel value="Soyad"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiSoyad}" />
+              
+                <p:outputLabel value="Adres"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiAdres}" />
+              
+                <p:outputLabel value="Doğum Tarihi"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiDogumTarihi}" />
+              
+ 		 		<p:outputLabel value="Cep No"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiCepNo}" />
+              
+                <p:outputLabel value="Yetki"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiYetki}" />
+              
+                <p:outputLabel value="Maaş"/>
+                <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiBirimMaas} TL" />
+              	
+              	<p:outputLabel value="" />
+              	<p:commandButton  value="DÜZENLE"/>
+              
+              
+            </p:panelGrid>
+			
+        </p:outputPanel>
+    </p:dialog>
+	 	</h:form>
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>
