@@ -18,7 +18,16 @@
 		
 		
 		<h:form id="form">
-	 	 <p:dataList value="#{odaBean.odaListele()}" var="row" type="unordered" itemType="none" paginator="false" rows="10" styleClass="top20">
+		<p:panel header="Oda Arama" styleClass="top20">
+			<p:panelGrid columns="2">
+			<p:inputText value="#{odaBean.arananOda}"  required="true" />
+			<p:commandButton value="Arama" action="#{odaBean.odaListele()}" update="aramaList" />
+			
+			</p:panelGrid>
+		</p:panel>
+		
+		
+	 	 <p:dataList value="#{odaBean.arananOdaList}" id ="aramaList" var="row" type="unordered" itemType="none" paginator="false" rows="10" styleClass="top20">
         <f:facet name="header">
             Yurt Oda Listesi
         </f:facet>

@@ -13,19 +13,20 @@ import oracle.jdbc.OracleTypes;
 public class OdaCRUD {
 	
 	
-	public static ArrayList<OdaBean> odaListele()
+	public static ArrayList<OdaBean> odaListele(String arananOda)
 	{
 		Connection conn =null;
 		CallableStatement cs =null;
 		
 		try {
 				conn=DatabaseConnection.getConnection();
-				cs=conn.prepareCall("{call ODALISTELE(?)}");
+				cs=conn.prepareCall("{call ODALISTELE(?,?)}");
 				cs.registerOutParameter(1, OracleTypes.CURSOR);
+				cs.setString(2, arananOda);
 				cs.executeQuery();
 				ResultSet rs = (ResultSet) cs.getObject(1);
-
-
+ 
+				
 				
 				ArrayList<OdaBean> liste = new ArrayList<OdaBean>();
 				while(rs.next())

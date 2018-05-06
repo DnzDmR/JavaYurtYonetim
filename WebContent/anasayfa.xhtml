@@ -15,7 +15,17 @@
 		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
 		<ui:define name="icerik">
 		
-	 
+	 	<p:panel header="Yurt Bilgileri" styleClass="top20">
+		
+			<p:panelGrid columns="1">
+			<p:outputLabel value="#{yurtBean.yurtAd}" />
+		
+			
+			<p:outputLabel value="#{yurtBean.yurtAdres}" />
+			<p:outputLabel value="#{yurtBean.yurtEposta}" />
+			<p:outputLabel value="#{yurtBean.yurtTelefon}" />
+			</p:panelGrid>
+		</p:panel>
 		
 		</ui:define>
 </ui:composition>

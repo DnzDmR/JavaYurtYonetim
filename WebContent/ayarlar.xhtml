@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		
+		<p:panel header="Kullanıcı Ayarları" styleClass="top20">
+			
+			<p:panelGrid columns="2">
+				<p:outputLabel  value="Tc" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiTc}" />
+				<p:outputLabel  value="Ad" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiAd}" />
+				<p:outputLabel  value="Soyad" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiSoyad}" />
+				<p:outputLabel  value="Adres" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiAdres}" />
+				<p:outputLabel  value="Doğum Tarihi" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiAd}" />
+				<p:outputLabel  value="Cep No" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiCepNo}" />
+				<p:outputLabel  value="Birim" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiBirimAd}" />
+				<p:outputLabel  value="Maas" />
+				<p:outputLabel  value="#{yoneticiBean.yoneticiBirimMaas}" />
+		 	</p:panelGrid>
+		 	
+		</p:panel>
+		
+		 <p:panel header="Şifre Değiştir" styleClass="top20">
+		 <p:panelGrid columns="2">
+		 	<p:outputLabel value="Eski Şifre" />
+		 	<p:password value="" /> 
+		 	<p:outputLabel value="Yeni Şifre" />
+		 	 <p:password id="psw1" value="#{passwordView.password3}" feedback="true"
+	                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
+	                    goodLabel="Orta seviye" strongLabel="Güçlü" />
+	 
+	 		<p:outputLabel value="Şifre Tekrar" />	 	
+	   		 <p:password id="psw2" value="#{passwordView.password3}" feedback="true"
+	                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
+	                    goodLabel="Orta seviye" strongLabel="Güçlü" />
+	                    
+	         <p:outputLabel/>
+	         <p:commandButton value="GÜNCELLE"/>           
+	           
+		</p:panelGrid>
+		 </p:panel>
+	 	
+		
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>

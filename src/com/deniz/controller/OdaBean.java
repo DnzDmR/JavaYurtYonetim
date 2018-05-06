@@ -21,9 +21,9 @@ public class OdaBean {
 	private String odaKod;
 	private OdaBean secilenOda;
 	private int odaMevcudu;
+	private String arananOda;
 	
-	
-	
+	private ArrayList<OdaBean> arananOdaList;
 	
   
 	 
@@ -31,6 +31,26 @@ public class OdaBean {
 	
 	
 	
+	public ArrayList<OdaBean> getArananOdaList() {
+		return arananOdaList;
+	}
+
+
+	public void setArananOdaList(ArrayList<OdaBean> arananOdaList) {
+		this.arananOdaList = arananOdaList;
+	}
+
+
+	public String getArananOda() {
+		return arananOda;
+	}
+
+
+	public void setArananOda(String arananOda) {
+		this.arananOda = arananOda;
+	}
+
+
 	public int getOdaId() {
 		return odaId;
 	}
@@ -111,24 +131,13 @@ public class OdaBean {
 	}
 
 
-	public ArrayList<OdaBean> odaListele()
+	public void odaListele()
 	{
+		System.out.println("lololol");
+		arananOdaList= OdaCRUD.odaListele(arananOda);
+	 
 		
-		// ODA YOKKEN PATLIYOR DÜZELT
-		ArrayList<OdaBean> a = OdaCRUD.odaListele();
-		
-		for(OdaBean nesne :a)
-		{
-			this.odaBalkonDurumu=nesne.odaBalkonDurumu;
-			this.odaFiyatBilgisi=nesne.odaFiyatBilgisi;
-			this.odaGenislik=nesne.odaGenislik;
-			this.odaId=nesne.odaId;
-			this.odaYatakSayisi=nesne.odaYatakSayisi;
-			this.odaMevcudu=nesne.odaMevcudu;
-			this.odaKod=nesne.odaKod;
-		}
-		
-		return OdaCRUD.odaListele();
+ 
 	}
 	
 	
