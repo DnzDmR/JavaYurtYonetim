@@ -142,6 +142,24 @@ public class YoneticiCRUD {
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return null;}
 		
 	}
+	
+	
+	public static boolean sifreGuncelle(Long yoneticiTc,String yoneticiSifre)
+	{
+		Connection conn =null;
+		CallableStatement cs =null;
+		try {
+			conn = DatabaseConnection.getConnection();
+			cs=conn.prepareCall("{call SIFREGUNCELLE(?,?)}");
+			cs.setLong(1, yoneticiTc);
+			cs.setString(2, yoneticiSifre);
+			cs.executeQuery();
+			
+			cs.close();
+			conn.close();
+			return true;
+		}catch(Exception e) {System.out.println("hata-->"+e.getMessage()); e.printStackTrace(); return false;}
+	}
 	 
 
 }

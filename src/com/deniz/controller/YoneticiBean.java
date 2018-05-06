@@ -30,22 +30,31 @@ public class YoneticiBean {
 	private Date yoneticiDogumTarihi;
 	
 	private Integer yoneticiBirimId;
-	private String yoneticiBirimAd;
 	private Integer yoneticiBirimMaas;
-	
+	private String yoneticiBirimAd;
+
 	
  	private java.util.Date tarih;
 
  	private YoneticiBean secilenYonetici;
  	private String arananDeger;
 	private ArrayList<YoneticiBean> arananYoneticiList;
-
+	
+	private String eskiSifre;
  	
  	
 
 	  
 	 
 	
+	public String getEskiSifre() {
+		return eskiSifre;
+	}
+
+	public void setEskiSifre(String eskiSifre) {
+		this.eskiSifre = eskiSifre;
+	}
+
 	public Long getYoneticiTc() {
 		return yoneticiTc;
 	}
@@ -258,7 +267,31 @@ public class YoneticiBean {
 	}
 	
 	
-	
+	public void sifreGuncelle()
+	{
+		
+		String valid = YoneticiCRUD.yoneticiGiris(Long.parseLong(YonetimSession.getYoneticiTc().toString()), eskiSifre);
+		if(valid.equals("var"))
+		{
+			boolean valid2= YoneticiCRUD.sifreGuncelle(Long.parseLong(YonetimSession.getYoneticiTc().toString()), yoneticiSifre);
+			if(valid2)
+			{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Şifre Değiştirildi."));
+			}
+			else
+			{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Şifre Değiştirilemedi."));
+			}
+		}
+		else 
+		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Mevcut Şifreniz Doğrulanamadı."));
+		}
+		 
+		
+			
+		
+	}
 	
 	
 	

@@ -10,7 +10,7 @@ public class YonetimSession {
 		return (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 	}
 	
-	public static String getYoneticiId()
+	public static String getYoneticiTc()
 	{
 		HttpSession session = getSession();
 		if (session!=null) 

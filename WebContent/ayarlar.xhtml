@@ -38,27 +38,29 @@
 		 	
 		</p:panel>
 		
+		<h:form id="sifreForm">
 		 <p:panel header="Şifre Değiştir" styleClass="top20">
 		 <p:panelGrid columns="2">
 		 	<p:outputLabel value="Eski Şifre" />
-		 	<p:password value="" /> 
+		 	<p:password value="#{yoneticiBean.eskiSifre}"  required="true" requiredMessage="sifre bos geçilemez" /> 
 		 	<p:outputLabel value="Yeni Şifre" />
-		 	 <p:password id="psw1" value="#{passwordView.password3}" feedback="true"
+		 	 <p:password id="psw1" value="#{yoneticiBean.yoneticiSifre}" feedback="true" match="psw2" validatorMessage="şifreler aynı değil"
 	                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
 	                    goodLabel="Orta seviye" strongLabel="Güçlü" />
 	 
 	 		<p:outputLabel value="Şifre Tekrar" />	 	
-	   		 <p:password id="psw2" value="#{passwordView.password3}" feedback="true"
+	   		 <p:password id="psw2" value="#{yoneticiBean.yoneticiSifre}" feedback="true"
 	                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
 	                    goodLabel="Orta seviye" strongLabel="Güçlü" />
 	                    
 	         <p:outputLabel/>
-	         <p:commandButton value="GÜNCELLE"/>           
+	         <p:commandButton value="GÜNCELLE" update="sifreForm" action="#{yoneticiBean.sifreGuncelle()}"/>           
 	           
-		</p:panelGrid>
+		</p:panelGrid> 
+		<p:messages/>
 		 </p:panel>
 	 	
-		
+		</h:form>
 		</ui:define>
 </ui:composition>
 		
