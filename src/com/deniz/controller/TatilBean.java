@@ -2,6 +2,7 @@ package com.deniz.controller;
  
  
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
@@ -154,5 +155,14 @@ public class TatilBean {
 		 
 	}
 	
+	
+	public ArrayList<TatilBean> izniGecenOgrenciler()
+	{
+		return TatilCRUD.izniGecenOgrenciler();
+	}
+	public void deneme()
+	{
+		System.out.println("###");
+	}
 
 }

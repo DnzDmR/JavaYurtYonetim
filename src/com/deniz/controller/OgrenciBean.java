@@ -59,12 +59,20 @@ public class OgrenciBean {
 	private OgrenciBean secilenOgrenci;
 	
 	private boolean bolumDegistirme;
-	
+	private int ogrenciOdeme;
 	 
 	
 	
 
 	
+
+	public int getOgrenciOdeme() {
+		return ogrenciOdeme;
+	}
+
+	public void setOgrenciOdeme(int ogrenciOdeme) {
+		this.ogrenciOdeme = ogrenciOdeme;
+	}
 
 	public String getOgrenciFakulteAd() {
 		return ogrenciFakulteAd;

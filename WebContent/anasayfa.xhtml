@@ -16,7 +16,6 @@
 		<ui:define name="icerik">
 		
 	 	<p:panel header="Yurt Bilgileri" styleClass="top20">
-		
 			<p:panelGrid columns="1">
 			<p:outputLabel value="#{yurtBean.yurtAd}" />
 		
@@ -26,6 +25,30 @@
 			<p:outputLabel value="#{yurtBean.yurtTelefon}" />
 			</p:panelGrid>
 		</p:panel>
+		
+		
+			
+	
+			<p:panel header="İzni Geçen Öğrenciler" styleClass="top20">
+				<h:form id="izinlerForm">
+					<ui:repeat var="row" value="#{tatilBean.izniGecenOgrenciler()}">
+			 			#{row.ogrenciAd}  	#{row.ogrenciSoyad}   #{row.ogrenciCepNo} 
+			 			<p:commandButton value="TIKLA">
+			 			<p:ajax  event="click" listener="#{tatilBean.deneme()}"/>
+			 			</p:commandButton>
+					<p:separator />	
+					</ui:repeat>
+				</h:form>
+			</p:panel>
+
+		
+		
+		
+		<p:panel header="Ödemesi Geçen Öğrenciler" styleClass="top20">
+			 
+		</p:panel>
+		
+		
 		
 		</ui:define>
 </ui:composition>

@@ -182,6 +182,7 @@ public class OgrenciCRUD {
 				ogrenci.setOgrenciKayitDurum(rs.getInt("KAYIT_DURUM"));
 				ogrenci.setOgrenciOdaNo(rs.getInt("ODA_ID"));
 				ogrenci.setOgrenciBolumId(rs.getInt("BOLUM_ID"));
+				ogrenci.setOgrenciOdeme(rs.getInt("FIYAT_BILGISI"));
 			 
 			}
 			
