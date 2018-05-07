@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		<h:form>
+	 	<p:panel header="İzin Talep Formu" styleClass="top20">
+			 	
+	
+			<p:panelGrid columns="2">
+		
+					
+					<p:outputLabel value="Öğrenci TC" />
+					<p:inputText value="#{tatilBean.ogrenciTc}"  maxlength="11" required="true" requiredMessage="TC boş geçilemez." disabled="true" >
+ 					<p:keyFilter regEx="/[\d]/"/>
+ 					</p:inputText>
+					
+					
+					<p:outputLabel value="Öğrenci Ad"   />
+					<p:inputText value="#{tatilBean.ogrenciAd}" maxlength="20" required="true" requiredMessage="Ad boş geçilemez." disabled="true" />
+					
+					
+					
+					<p:outputLabel value="Öğrenci Soyad" />
+					<p:inputText value="#{tatilBean.ogrenciSoyad}" maxlength="20" required="true" requiredMessage="Soyad boş geçilemez." disabled="true" />
+					
+						
+					<p:outputLabel value="Öğrenci Cep No" />
+					<p:inputText value="#{tatilBean.ogrenciCepNo}" maxlength="11" required="true" requiredMessage="Öğrenci cep no boş geçilemez." disabled="true" >  
+					<p:keyFilter regEx="/[\d]/"/>
+ 					</p:inputText>
+ 					
+ 					
+ 					 <p:outputLabel for="mask1" value="Gidiş Tarihi:" />
+       				 <p:calendar id="mask1" value="#{tatilBean.uGidisTarih}" pattern="dd/MM/yyyy" mask="true" />
+ 
+  					<p:outputLabel for="mask2" value="Dönüş Tarihi:" />
+       				 <p:calendar id="mask2" value="#{tatilBean.uDonusTarih}" pattern="dd/MM/yyyy" mask="true" />
+ 
+					<p:outputLabel value="İzin Adresi:"/>
+					<p:inputTextarea value="#{tatilBean.izinAdresi}" cols="23"/>
+					
+					<p:outputLabel />
+					<p:commandButton value="İZİN OLUŞTUR"  action="#{tatilBean.izinTalep()}" />
+					
+					
+ 			
+			 </p:panelGrid>
+			 
+		</p:panel>
+	</h:form>
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>

@@ -37,17 +37,16 @@
     </p:dataList>
 	 	
 	 	
-	 	 <p:dialog header="Oda Bilgi" widgetVar="aramaDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+	 	 <p:dialog header="Öğrenci Bilgi" widgetVar="aramaDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
         <p:outputPanel id="aramaDetay" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty ogrenciBean.secilenOgrenci}" columnClasses="label,value">
+            <p:panelGrid  columns="2" rendered="#{not empty ogrenciBean.secilenOgrenci}" columnClasses="label,value" style="width:375px">
                  
-                       
                 <p:outputLabel value="Oda No"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciOdaNo}" />
-              
+             	
  				<p:outputLabel value="TC"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciTc}"/>
-                
+               
  				<p:outputLabel value="Ad"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciAd}"/>
            		
@@ -78,18 +77,25 @@
                 
                 <p:outputLabel value="Bölüm"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciBolumAd}"/>
-                
-                
-          
-           		<p:outputLabel value="" />
-				<p:commandButton value="DUZENLE" action="#{ogrenciBean.ogrenciCek()}" >
-				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />
-				</p:commandButton>
-			 	
-            	
-                
+                 
+           		
+				
+				
             </p:panelGrid>
 			
+			<h:panelGrid columns="3" styleClass="top20">
+			<p:commandButton value="İZİN TALEP" action="#{tatilBean.izin()}" >
+				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />
+				</p:commandButton>
+				
+				<p:commandButton value="ÖDEME YAP" >
+				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />
+				</p:commandButton> 
+			 	
+            	<p:commandButton value="DUZENLE" action="#{ogrenciBean.ogrenciCek()}" >
+				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />
+				</p:commandButton> 
+			</h:panelGrid>	
         </p:outputPanel>
     </p:dialog>
 	 	</h:form>

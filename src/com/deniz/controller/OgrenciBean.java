@@ -422,6 +422,15 @@ public class OgrenciBean {
 		
 	}
 	
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void temizle()
 	{
