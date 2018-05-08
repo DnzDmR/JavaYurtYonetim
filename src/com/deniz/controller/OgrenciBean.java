@@ -430,16 +430,7 @@ public class OgrenciBean {
 		
 	}
 	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
+ 
 	public void temizle()
 	{
 		this.ogrenciTc=null;
@@ -454,6 +445,17 @@ public class OgrenciBean {
 		this.ogrenciSinif=null;
  
 	
+	}
+	
+	public void ogrenciSil()
+	{
+		Map<String,String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		
+		if(map.get("cevap").equals("evet"))
+		{
+			boolean valid =OgrenciCRUD.ogrenciSil(Integer.parseInt(map.get("ogrenciId")));
+		}
+
 	}
 	
 	

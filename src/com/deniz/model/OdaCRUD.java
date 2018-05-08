@@ -12,12 +12,13 @@ import oracle.jdbc.OracleTypes;
 
 public class OdaCRUD {
 	
+ 
 	
 	public static ArrayList<OdaBean> odaListele(String arananOda)
 	{
 		Connection conn =null;
 		CallableStatement cs =null;
-		
+	 
 		try {
 				conn=DatabaseConnection.getConnection();
 				cs=conn.prepareCall("{call ODALISTELE(?,?)}");

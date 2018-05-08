@@ -11,14 +11,21 @@
 <ui:composition>
 <h:form>
     <p:menu toggleable="true" styleClass="top20">
-        <p:submenu label="Ögrenci İşlemleri">
+    
+       <p:submenu label="Kullanıcı İşlemi">
+            <p:menuitem value="Anasayfa" 		url="anasayfa.jsf" icon="ui-icon-disk"/>
+            <p:menuitem value="Ayarlar" 	url="ayarlar.jsf" icon="ui-icon-pencil"/>
+            
+            
+         </p:submenu>
+        <p:submenu label="Ögrenci İşlemi">
             <p:menuitem value="Öğrenci Kayıt" 		url="ogrencikayit.jsf" icon="ui-icon-disk"/>
             <p:menuitem value="Öğrenci Oda Kayıt" 	url="ogrenciodakayit.jsf" icon="ui-icon-pencil"/>
             <p:menuitem value="Öğrenci Listele" 	url="ogrencilistele.jsf" icon="ui-icon-pencil"/>
             <p:menuitem value="Öğrenci İzin" 	url="izinislemleri.jsf" icon="ui-icon-pencil"/>
             
          </p:submenu>
-        <p:submenu label="Yönetici İşlemleri">
+        <p:submenu label="Yönetici">
             <p:menuitem value="Yönetici Kayıt" 	 url="yoneticikayit.jsf" icon="ui-icon-disk"/>
             <p:menuitem value="Yönetici Listele" url="yoneticilistele.jsf" icon="ui-icon-pencil"/>
         </p:submenu>

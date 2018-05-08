@@ -14,11 +14,21 @@
     <p:growl id="messages"/>
  
     <p:menubar>
-         <p:menuitem value="Anasayfa" url="anasayfa.jsf" icon="ui-icon-document" />
- 		 <p:menuitem value="Ayarlar" url="ayarlar.jsf" icon="ui-icon-arrowrefresh-1-w" />
- 
+    
+    
         <f:facet name="options">
-             <p:commandButton  action="#{yoneticiBean.sessionDestroy}" value="Güvenli Çıkış" icon="ui-icon-extlink" style="margin-right:40px;" />
+              
+				<p:commandButton value="Güvenli Çıkış" icon="ui-icon-extlink">
+       			<p:confirm header="Çıkış Yapılacak"  message=" Çıkış yapmak istiyor musunuz?" />
+  				</p:commandButton>
+  				 
+  				 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			        <p:commandButton  value="Evet" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" >
+			        <p:ajax event="click" listener="#{yoneticiBean.sessionDestroy}" />
+ 			        </p:commandButton>
+			        <p:commandButton value="Hayır" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" >
+ 			        </p:commandButton>
+			    </p:confirmDialog> 
         </f:facet>
     </p:menubar>
 </h:form>

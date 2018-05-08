@@ -39,7 +39,7 @@
 	 	
 	 	 <p:dialog header="Öğrenci Bilgi" widgetVar="aramaDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
         <p:outputPanel id="aramaDetay" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty ogrenciBean.secilenOgrenci}" columnClasses="label,value" style="width:375px">
+            <p:panelGrid  columns="2" rendered="#{not empty ogrenciBean.secilenOgrenci}" columnClasses="label,value" style="width:470px">
                  
                 <p:outputLabel value="Oda No"/>
                 <p:outputLabel value="#{ogrenciBean.secilenOgrenci.ogrenciOdaNo}" />
@@ -83,7 +83,7 @@
 				
             </p:panelGrid>
 			
-			<h:panelGrid columns="3" styleClass="top20">
+			<h:panelGrid columns="4" styleClass="top20">
 			<p:commandButton value="İZİN TALEP" action="#{tatilBean.izin()}" >
 				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />
 				</p:commandButton>
@@ -95,6 +95,23 @@
             	<p:commandButton value="DUZENLE" action="#{ogrenciBean.ogrenciCek()}" >
 				<f:param name="ogrenciId" value="#{ogrenciBean.secilenOgrenci.ogrenciId}" />
 				</p:commandButton> 
+				
+				<p:commandButton value="SİL">
+       			<p:confirm header="Öğrenci Silinecek"  message="#{ogrenciBean.secilenOgrenci.ogrenciAd} kullanıcısını silmek istiyor musunuz?" icon="ui-icon-alert" />
+  				</p:commandButton>
+  				 
+  				 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			        <p:commandButton  value="Evet" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" >
+			        <p:ajax event="click" listener="#{ogrenciBean.ogrenciSil()}" />
+			        <f:param value="#{ogrenciBean.secilenOgrenci.ogrenciId}" name="ogrenciId" /> 
+			        <f:param value="evet" name="cevap" />
+			        </p:commandButton>
+			        <p:commandButton value="Hayır" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" >
+			        <p:ajax event="click" listener="#{ogrenciBean.ogrenciSil()}" />
+			        <f:param value="hayir" name="cevap" />
+			        </p:commandButton>
+			    </p:confirmDialog> 
+				
 			</h:panelGrid>	
         </p:outputPanel>
     </p:dialog>

@@ -46,12 +46,12 @@
 		 	<p:outputLabel value="Eski Şifre" />
 		 	<p:password value="#{yoneticiBean.eskiSifre}"  required="true" requiredMessage="sifre bos geçilemez" /> 
 		 	<p:outputLabel value="Yeni Şifre" />
-		 	 <p:password id="psw1" value="#{yoneticiBean.yoneticiSifre}" feedback="true" match="psw2" validatorMessage="şifreler aynı değil"
+		 	 <p:password id="psw1" value="#{yoneticiBean.yoneticiSifre}" feedback="true" match="psw2" required="true" requiredMessage="bos geçilemez" validatorMessage="şifreler aynı değil"
 	                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
 	                    goodLabel="Orta seviye" strongLabel="Güçlü" />
 	 
 	 		<p:outputLabel value="Şifre Tekrar" />	 	
-	   		 <p:password id="psw2" value="#{yoneticiBean.yoneticiSifre}" feedback="true"
+	   		 <p:password id="psw2" value="#{yoneticiBean.yoneticiSifre}" feedback="true" required="true" requiredMessage="bos geçilemez"
 	                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
 	                    goodLabel="Orta seviye" strongLabel="Güçlü" />
 	                    

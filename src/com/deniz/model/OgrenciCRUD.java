@@ -226,5 +226,21 @@ public class OgrenciCRUD {
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false;}
 	}
 	
+	public static boolean ogrenciSil(int ogrenciId)
+	{
+		Connection conn=null;
+		CallableStatement cs=null;
+		
+		try {
+			conn = DatabaseConnection.getConnection();
+			cs = conn.prepareCall("{call OGRENCISIL(?)}");
+			cs.setInt(1, ogrenciId);
+			cs.execute();
+			return true;
+			
+		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false;}
+		
+	}
+	
 
 }

@@ -261,10 +261,12 @@ public class YoneticiBean {
 	}
 	
 	
-	public String sessionDestroy()
+	public void sessionDestroy()
 	{
 		YonetimSession.sessionDestroy();
-		return "index.jsf?faces-redirect=true";
+		 try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+		} catch (IOException e) {e.printStackTrace();}
 	}
 	
 	

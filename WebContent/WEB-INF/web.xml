@@ -15,6 +15,6 @@
   </servlet-mapping>
   <context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>pepper-grinder</param-value>
+		<param-value>home</param-value>
 	</context-param>
 </web-app>
