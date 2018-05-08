@@ -52,7 +52,7 @@ public class YoneticiCRUD {
 		
 		try {
 			conn = DatabaseConnection.getConnection();
-			cs = conn.prepareCall("{call YONETICIEKLE(?,?,?,?,?,?,?,?,?)}");
+			cs = conn.prepareCall("{call YONETICIEKLE(?,?,?,?,?,?,?,?,?,?)}");
 			cs.setLong(1,yonetici.getYoneticiTc());
 			cs.setString(2, yonetici.getYoneticiAd());
 			cs.setString(3, yonetici.getYoneticiSoyad());
@@ -62,8 +62,16 @@ public class YoneticiCRUD {
 			cs.setString(7, yonetici.getYoneticiSifre());
 			cs.setInt(8, yonetici.getYoneticiYetki());
 			cs.setInt(9, yonetici.getYoneticiBirimId());
+			cs.registerOutParameter(10, OracleTypes.INTEGER);
 			cs.executeQuery();
 			
+			int sorguSonuc =(int) cs.getObject(10);
+			if(sorguSonuc==0)
+			{
+				conn.close();
+				cs.close();
+				return false;
+			}
 			
 			return true;
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); return false;}

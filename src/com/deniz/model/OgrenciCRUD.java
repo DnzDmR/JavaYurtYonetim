@@ -20,7 +20,7 @@ public class OgrenciCRUD {
 		try
 		{
 		conn = DatabaseConnection.getConnection();
-		cs = conn.prepareCall("{call OGRENCIEKLE(?,?,?,?,?,?,?,?,?,?)}");
+		cs = conn.prepareCall("{call OGRENCIEKLE(?,?,?,?,?,?,?,?,?,?,?)}");
 		cs.setLong(1, ogrenci.getOgrenciTc());
 		cs.setString(2, ogrenci.getOgrenciAd());
 		cs.setString(3, ogrenci.getOgrenciSoyad());
@@ -31,7 +31,17 @@ public class OgrenciCRUD {
 		cs.setLong(8, ogrenci.getOgrenciVeliCepNo());
 		cs.setInt(9, ogrenci.getOgrenciSinif());
 		cs.setInt(10, ogrenci.getSecilenBolumId());
-		cs.executeQuery();	
+		cs.registerOutParameter(11, OracleTypes.INTEGER);
+		cs.executeQuery();
+		
+		int sorguSonuc =(int) cs.getObject(11);
+		if(sorguSonuc==0)
+		{
+			conn.close();
+			cs.close();
+			return false;
+		} 
+		
 		conn.close();
 		cs.close();
 		return true;

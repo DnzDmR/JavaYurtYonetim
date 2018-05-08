@@ -18,12 +18,24 @@ public class TatilCRUD {
 		CallableStatement cs =null;
 		try {
 			conn= DatabaseConnection.getConnection();
-			cs = conn.prepareCall("{call IZINEKLE(?,?,?,?)}");
+			cs = conn.prepareCall("{call IZINEKLE(?,?,?,?,?)}");
 			cs.setInt(1, izin.getOgrenciId());
 			cs.setDate(2, izin.getGidisTarih());
 			cs.setDate(3, izin.getDonusTarih());
 			cs.setString(4, izin.getIzinAdresi());
+			cs.registerOutParameter(5, OracleTypes.INTEGER);
 			cs.execute();
+			
+			int sorguSonuc =(int) cs.getObject(5);
+			if(sorguSonuc==0)
+			{
+				conn.close();
+				cs.close();
+				return false;
+			} 
+			
+			conn.close();
+			cs.close();
 			return true;
 			
 			

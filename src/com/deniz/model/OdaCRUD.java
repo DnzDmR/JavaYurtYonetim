@@ -95,14 +95,25 @@ public class OdaCRUD {
 		CallableStatement cs =null;
 		try {
 			conn = DatabaseConnection.getConnection();
-			cs =conn.prepareCall("{call ODAKAYIT(?,?,?,?,?)}");
+			cs =conn.prepareCall("{call ODAKAYIT(?,?,?,?,?,?)}");
 			cs.setString(1, ogrenci.getOdaKod());
 			cs.setInt(2, ogrenci.getOdaYatakSayisi());
 			cs.setInt(3, ogrenci.getOdaBalkonDurumu());
 			cs.setInt(4, ogrenci.getOdaFiyatBilgisi());
 			cs.setInt(5, ogrenci.getOdaGenislik());
+			cs.registerOutParameter(6, OracleTypes.INTEGER);
 			cs.executeQuery();
 			
+			int sorguSonuc =(int) cs.getObject(6);
+			if(sorguSonuc==0)
+			{
+				conn.close();
+				cs.close();
+				return false;
+			} 
+			
+			conn.close();
+			cs.close();
 			return true;
 		}catch(Exception e) {System.out.println("Hata->>"+e.getMessage()); e.printStackTrace(); return false;}
 	}
