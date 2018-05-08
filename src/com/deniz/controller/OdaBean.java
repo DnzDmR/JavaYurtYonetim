@@ -1,6 +1,7 @@
 package com.deniz.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -160,4 +161,40 @@ public class OdaBean {
 		}
 		
 	}
+	
+	
+	public String duzen()
+	{
+		Map<String,String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		ArrayList<OdaBean> oda = OdaCRUD.odaListele(map.get("odaKod"));
+		for(OdaBean a :oda)
+		{
+			this.odaBalkonDurumu=a.odaBalkonDurumu;
+			this.odaFiyatBilgisi=a.odaFiyatBilgisi;
+			this.odaGenislik=a.odaGenislik;
+			this.odaMevcudu=a.odaMevcudu;
+			this.odaKod=a.odaKod;
+			this.odaYatakSayisi =a.odaYatakSayisi;
+			this.odaId =a.odaId;
+		}
+				
+		return "odaduzenle.jsf?faces-redirect=true";
+		
+	}
+	
+	
+	public void odaGuncelle()
+	{
+		OdaBean oda =this;
+		boolean valid = OdaCRUD.odaGuncelle(oda);
+		if(valid)
+		{
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Oda Güncellendi."));
+		}
+		else
+		{
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Oda Güncellenemedi."));
+		}
+	}
+	
 }

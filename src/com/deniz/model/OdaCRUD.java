@@ -106,5 +106,34 @@ public class OdaCRUD {
 		}catch(Exception e) {System.out.println("Hata->>"+e.getMessage()); e.printStackTrace(); return false;}
 	}
 	
+	
+	
+	public static boolean odaGuncelle(OdaBean oda)
+	{
+		System.out.println(oda.getOdaKod());
+		System.out.println(oda.getOdaId());
+		Connection conn =null;
+		CallableStatement cs =null;
+		try {
+			conn = DatabaseConnection.getConnection();
+			cs = conn.prepareCall("{call ODAGUNCELLE(?,?,?,?,?,?)}");
+			cs.setInt(1, oda.getOdaId());
+			cs.setString(2, oda.getOdaKod());
+			cs.setInt(3, oda.getOdaBalkonDurumu());
+			cs.setInt(4,oda.getOdaFiyatBilgisi());
+			cs.setInt(5,oda.getOdaGenislik());
+			cs.setInt(6, oda.getOdaYatakSayisi());
+			cs.executeUpdate();
+			
+			cs.close();
+			conn.close();
+		
+			return true;
+		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false;}
+	}
+	
+	
+	  
+	
 
 }

@@ -63,7 +63,9 @@
                 <p:outputLabel value="#{odaBean.secilenOda.odaGenislik} &#x33A1; " />
                 
            		<p:outputLabel />
-           		<p:commandButton value="DUZENLE" />
+           		<p:commandButton value="DUZENLE" action="#{odaBean.duzen()}" >
+           		<f:param  name="odaKod" value="#{odaBean.secilenOda.odaKod}" />
+           		</p:commandButton>
                 
                 
             </p:panelGrid>
