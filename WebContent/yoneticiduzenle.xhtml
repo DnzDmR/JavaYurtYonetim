@@ -14,21 +14,21 @@
 
 		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
 		<ui:define name="icerik">
-		#{yoneticiBean.temizle()}
-		<h:form id="kayitForm">
+		
+		<h:form id="guncellemeForm">
 		<p:panel header="Yönetici Kayıt Formu" styleClass="top20">
 			<p:panelGrid columns="2">
 				
-				<p:outputLabel for="yTc" value="Yönetici TC" />
-				<p:inputText id="yTc" value="#{yoneticiBean.yoneticiTc}"   maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
+				<p:outputLabel value="Yönetici TC" />
+				<p:inputText value="#{yoneticiBean.yoneticiTc}"   maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
 				<p:keyFilter regEx="/[\d]/"/>
  				</p:inputText>
  				
- 				<p:outputLabel for="yAd" value="Yönetici Ad"/>
-				<p:inputText id="yAd" value="#{yoneticiBean.yoneticiAd}" required="true" requiredMessage="Ad boş geçilemez." />
+ 				<p:outputLabel  value="Yönetici Ad"/>
+				<p:inputText value="#{yoneticiBean.yoneticiAd}" required="true" requiredMessage="Ad boş geçilemez." />
 				
-				<p:outputLabel for="ySoyad"   value="Yönetici Soyad"/>
-				<p:inputText id="ySoyad" value="#{yoneticiBean.yoneticiSoyad}" required="true" requiredMessage="Soyad boş geçilemez." />
+				<p:outputLabel  value="Yönetici Soyad"/>
+				<p:inputText value="#{yoneticiBean.yoneticiSoyad}" required="true" requiredMessage="Soyad boş geçilemez." />
 			
 				<p:outputLabel for="adres"  value="Yönetici Adres"/>
 				<p:inputText value="#{yoneticiBean.yoneticiAdres}" id="adres" required="true" requiredMessage="Adres boş geçilemez."/>
@@ -38,13 +38,13 @@
        			 <p:calendar value="#{yoneticiBean.tarih}" id="mask"  pattern="dd/MM/yyyy" mask="true" required="true" requiredMessage="Doğum tarihi boş geçilemez" />
 			
 			
-				<p:outputLabel for="yCepNo" value="Yönetici Cep No"/>
-				<p:inputText id="yCepNo" value="#{yoneticiBean.yoneticiCepNo}" required="true" requiredMessage="Cep No Boş geçilemez" > 
+				<p:outputLabel  value="Yönetici Cep No"/>
+				<p:inputText value="#{yoneticiBean.yoneticiCepNo}" required="true" requiredMessage="Cep No Boş geçilemez" > 
 				<p:keyFilter regEx="/[\d]/"/>
 				</p:inputText>
 				
-				<p:outputLabel for="ySifre"  value="Yönetici Şifre"/>
-				<p:inputText  id="ySifre" value="#{yoneticiBean.yoneticiSifre}" required="true" requiredMessage="Şifre boş geçilemez."/>
+				<p:outputLabel  value="Yönetici Şifre"/>
+				<p:inputText  value="#{yoneticiBean.yoneticiSifre}" required="true" requiredMessage="Şifre boş geçilemez."/>
 		
 				<p:outputLabel  value="Yönetici Birim"/>
 				<p:selectOneMenu value="#{yoneticiBean.yoneticiBirimId}">
@@ -59,8 +59,8 @@
 				</p:selectOneMenu>
 				
 				<p:outputLabel/>
-				<p:commandButton value="KAYDET" update="kayitForm" action="#{yoneticiBean.yoneticiKaydet}"/>
-				
+				<p:commandButton value="GÜNCELLE" action="#{yoneticiBean.yoneticiGuncelle()}" update="guncellemeForm" />
+				 
 			</p:panelGrid>
 			<p:messages/>
 		</p:panel>

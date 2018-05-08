@@ -21,7 +21,7 @@
 			<p:panelGrid columns="2">
 				
  					<p:outputLabel value="Oda İsmi"   />
- 					<p:inputText value="#{odaBean.odaKod}"  />
+ 					<p:inputText value="#{odaBean.odaKod}"  required="true" requiredMessage="oda ismi boş geçilemez" />
  					
  					<p:outputLabel value="Yatak Sayısı"   />
  					<p:selectOneMenu value="#{odaBean.odaYatakSayisi}">
@@ -44,10 +44,10 @@
  					</p:selectOneMenu>
  					
  					<p:outputLabel value="Fiyat Bilgisi"   />
- 					<p:inputText value="#{odaBean.odaFiyatBilgisi}"  />
+ 					<p:inputText value="#{odaBean.odaFiyatBilgisi}" required="true" requiredMessage="fiyat bilgisi geçilemez" />
  					
  					<p:outputLabel value="Genişlik "   />
- 					<p:inputText  value="#{odaBean.odaGenislik}" />
+ 					<p:inputText  value="#{odaBean.odaGenislik}" required="true" requiredMessage="genişlik boş geçilemez" />
 		
 					<p:outputLabel />
 					<p:commandButton value="ODA EKLE" action="#{odaBean.odaKaydet}"  update="kayitForm" />	

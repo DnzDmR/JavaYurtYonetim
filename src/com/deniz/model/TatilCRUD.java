@@ -68,5 +68,59 @@ public class TatilCRUD {
 			
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return null;}
 	}
+	
+	
+	
+	public static boolean izindenDonenOgrenci(int ogrenciId)
+	{
+		Connection conn =null;
+		CallableStatement cs = null;
+		
+		try {
+			conn =DatabaseConnection.getConnection();
+			cs =conn.prepareCall("{call IZINDENDONENOGRENCI(?)}");
+			cs.setInt(1, ogrenciId);
+			cs.execute();
+			
+			return true;
+		}catch(Exception e) {System.out.println("hata->>" +e.getMessage()); return false;}
+	}
+	
+	
+	public static ArrayList<TatilBean> izindeOlanOgrenciler()
+	{
+		Connection conn=null;
+		CallableStatement cs = null;
+		try
+		{
+			conn =DatabaseConnection.getConnection();
+			cs=conn.prepareCall("{call IZINDEOLANOGRENCI(?)}");
+			cs.registerOutParameter(1, OracleTypes.CURSOR);
+			cs.execute();
+			ResultSet rs =  (ResultSet) cs.getObject(1);
+			
+			ArrayList<TatilBean> liste = new  ArrayList<TatilBean>();
+			while(rs.next())
+			{
+				TatilBean ogrenci =new TatilBean();
+				
+				
+				ogrenci.setOgrenciTc(rs.getLong("OGRENCI_TC"));
+				ogrenci.setOgrenciId(rs.getInt("OGRENCI_ID"));
+				ogrenci.setOgrenciAd(rs.getString("OGRENCI_AD"));
+				ogrenci.setOgrenciSoyad(rs.getString("OGRENCI_SOYAD"));
+				ogrenci.setOgrenciCepNo(rs.getLong("OGRENCI_CEPNO"));
+				ogrenci.setGidisTarih(rs.getDate("GIDIS_TARIH"));
+				ogrenci.setDonusTarih(rs.getDate("DONUS_TARIH"));
+ 		
+				liste.add(ogrenci);
+			}
+			
+			conn.close();
+			cs.close();
+			return liste;
+			
+		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return null;}
+	}
 
 }

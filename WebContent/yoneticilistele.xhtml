@@ -68,7 +68,9 @@
                 <p:outputLabel value="#{yoneticiBean.secilenYonetici.yoneticiBirimMaas} TL" />
               	
               	<p:outputLabel value="" />
-              	<p:commandButton  value="DÜZENLE"/>
+              	<p:commandButton  value="DÜZENLE" action="#{yoneticiBean.duzen()}">
+              	<f:param name="yoneticiTc" value="#{yoneticiBean.secilenYonetici.yoneticiTc}"  />
+              	</p:commandButton>
               
               
             </p:panelGrid>

@@ -196,6 +196,34 @@ public class YoneticiCRUD {
 			return yonetici;
 		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace();return null; }
 	}
+	
+	
+	public static boolean yoneticiGuncelle(YoneticiBean yonetici)
+	{
+		Connection conn =null;
+		CallableStatement cs = null;
+		try
+		{
+			conn = DatabaseConnection.getConnection();
+			cs=conn.prepareCall("{call YONETICIGUNCELLE(?,?,?,?,?,?,?,?,?,?)}");
+			cs.setLong(1, yonetici.getYoneticiTc());
+			cs.setString(2, yonetici.getYoneticiAd());
+			cs.setString(3, yonetici.getYoneticiSoyad());
+			cs.setString(4, yonetici.getYoneticiAdres());
+			cs.setDate(5, yonetici.getYoneticiDogumTarihi());
+			cs.setLong(6, yonetici.getYoneticiCepNo());
+			cs.setString(7, yonetici.getYoneticiSifre());
+			cs.setInt(8, yonetici.getYoneticiYetki());
+			cs.setInt(9, yonetici.getYoneticiBirimId());
+			cs.setInt(10,yonetici.getYoneticiId());
+			cs.execute();
+			
+			cs.close();
+			conn.close();
+			
+			return true;
+		}catch(Exception e) {System.out.println("hata-->"+e.getMessage()); e.printStackTrace(); return false;}
+	}
 	 
 
 }

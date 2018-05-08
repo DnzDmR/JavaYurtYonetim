@@ -21,48 +21,48 @@
 			<p:panelGrid columns="2">
 				
  					
-					<p:outputLabel value="Öğrenci TC" />
-					<p:inputText value="#{ogrenciBean.ogrenciTc}"  maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
+					<p:outputLabel value="Öğrenci TC" for="oTc" />
+					<p:inputText value="#{ogrenciBean.ogrenciTc}" id="oTc"  maxlength="11" required="true" requiredMessage="TC boş geçilemez." >
 					<f:validateLength minimum="11" />  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
-					<p:outputLabel value="Öğrenci Ad"   />
-					<p:inputText value="#{ogrenciBean.ogrenciAd}" maxlength="20" required="true" requiredMessage="Ad boş geçilemez." />
+					<p:outputLabel value="Öğrenci Ad" for="oAd"  />
+					<p:inputText value="#{ogrenciBean.ogrenciAd}" id="oAd" maxlength="20" required="true" requiredMessage="Ad boş geçilemez." />
 					
 					
-					<p:outputLabel value="Öğrenci Soyad" />
-					<p:inputText value="#{ogrenciBean.ogrenciSoyad}" maxlength="20" required="true" requiredMessage="Soyad boş geçilemez." />
+					<p:outputLabel value="Öğrenci Soyad" for="oSoyad"/>
+					<p:inputText value="#{ogrenciBean.ogrenciSoyad}"  id="oSoyad" maxlength="20" required="true" requiredMessage="Soyad boş geçilemez." />
 					
 					
-					<p:outputLabel value="Öğrenci Adres" />
-					<p:inputTextarea value="#{ogrenciBean.ogrenciAdres}" maxlength="50"  rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
+					<p:outputLabel value="Öğrenci Adres" for="oAdres" />
+					<p:inputTextarea value="#{ogrenciBean.ogrenciAdres}" id="oAdres" maxlength="50"  rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
 					
 					
-					 <p:outputLabel for="mask" value="Doğum Tarihi:" />
-       				 <p:calendar id="mask" value="#{ogrenciBean.tarih}" pattern="dd/MM/yyyy" mask="true" />
+					 <p:outputLabel for="oTarih" value="Doğum Tarihi:" />
+       				 <p:calendar id="oTarih" value="#{ogrenciBean.tarih}" pattern="dd/MM/yyyy" mask="true" required="true"  />
  
 					
 					
-					<p:outputLabel value="Öğrenci Cep No" />
-					<p:inputText value="#{ogrenciBean.ogrenciCepNo}" maxlength="12" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
+					<p:outputLabel for="oCep" value="Öğrenci Cep No" />
+					<p:inputText id="oCep" value="#{ogrenciBean.ogrenciCepNo}" maxlength="12" required="true" requiredMessage="Öğrenci cep no boş geçilemez." >  
 					<p:keyFilter regEx="/[\d]/"/>
  					</p:inputText>
 					
 					
-					<p:outputLabel value="Öğrenci Veli Ad" />
-					<p:inputText value="#{ogrenciBean.ogrenciVeliAd}" maxlength="20" required="true" requiredMessage="veli ad boş geçilemez." />
+					<p:outputLabel for="oVeli" value="Öğrenci Veli Ad" />
+					<p:inputText id="oVeli" value="#{ogrenciBean.ogrenciVeliAd}" maxlength="20" required="true" requiredMessage="veli ad boş geçilemez." />
 					
 					
-					<p:outputLabel value="Öğrenci Veli Cep No" />
-					<p:inputText value="#{ogrenciBean.ogrenciVeliCepNo}" maxlength="11" required="true" requiredMessage="Veli cep no boş geçilemez.">
+					<p:outputLabel for="ovCep" value="Öğrenci Veli Cep No" />
+					<p:inputText id="ovCep" value="#{ogrenciBean.ogrenciVeliCepNo}" maxlength="11" required="true" requiredMessage="Veli cep no boş geçilemez.">
 					<p:keyFilter regEx="/[\d]/"/>
 					</p:inputText>
 					
 					
-					<p:outputLabel value="Sınıf" />
-					<p:selectOneMenu value="#{ogrenciBean.ogrenciSinif}">
+					<p:outputLabel  value="Sınıf" />
+					<p:selectOneMenu  value="#{ogrenciBean.ogrenciSinif}">
 						<f:selectItem itemValue="0" itemLabel="Hazırlık" />
 						<f:selectItem itemValue="1" itemLabel="1" />
 						<f:selectItem itemValue="2" itemLabel="2" />

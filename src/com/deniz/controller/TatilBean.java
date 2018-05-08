@@ -160,9 +160,28 @@ public class TatilBean {
 	{
 		return TatilCRUD.izniGecenOgrenciler();
 	}
-	public void deneme()
-	{
-		System.out.println("###");
-	}
+ 
 
+	public void izindenDonenOgrenci()
+	{
+
+		Map<String,String> parametre =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		OgrenciBean  ogrenci =OgrenciCRUD.ogrenciCek(Integer.parseInt(parametre.get("ogrenciId")));
+		System.out.println("##"+ogrenci.getOgrenciId());
+		boolean valid = TatilCRUD.izindenDonenOgrenci(ogrenci.getOgrenciId());
+		 if(valid)
+		 {
+			 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("okeyyyyyyy."));
+		 }
+		 else
+		 {
+			 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("nooooooooooo."));
+		 }
+	}
+	
+	
+	public ArrayList<TatilBean> izindeOlanOgrenciler()
+	{
+		return TatilCRUD.izindeOlanOgrenciler();
+	}
 }

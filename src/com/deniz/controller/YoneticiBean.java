@@ -4,6 +4,7 @@ package com.deniz.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -317,8 +318,45 @@ public class YoneticiBean {
 	}
 	
 	
+	public String duzen()
+	{
+		Map<String, String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		YoneticiBean a =YoneticiCRUD.yoneticiCek(Long.parseLong(map.get("yoneticiTc")));
+		
+		
+		this.yoneticiSoyad=a.yoneticiSoyad;
+		this.yoneticiAd=a.yoneticiAd;
+		this.yoneticiAdres=a.yoneticiAdres;
+		this.yoneticiTc=a.yoneticiTc;
+		this.tarih=a.yoneticiDogumTarihi;
+		this.yoneticiCepNo=a.yoneticiCepNo;
+		this.yoneticiBirimAd=a.yoneticiBirimAd;
+		this.yoneticiYetki=a.yoneticiYetki;
+		this.yoneticiSifre=a.yoneticiSifre;
+		this.yoneticiBirimId=a.yoneticiBirimId;
+		this.yoneticiId=a.yoneticiId;
+	
+		return "yoneticiduzenle.jsf?faces-redirect=true";
+	}
 	
 	
+	public void yoneticiGuncelle()
+	{
+			java.util.Date utilDate = tarih;
+		    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		    this.yoneticiDogumTarihi=sqlDate;
+		    
+			YoneticiBean yonetici = this;
+			boolean valid = YoneticiCRUD.yoneticiGuncelle(yonetici);
+			if(valid)
+			{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Yönetici Güncellendi."));
+			}
+			else
+			{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Yönetici Güncellenemedi."));
+			}
+	}
 	
 	
 	

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<body> 
+
+<ui:composition template="template/anasablon.xhtml">
+
+		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
+		<ui:define name="icerik">
+		
+			
+	
+			<p:panel header="İzin Tarihi Geçen Öğrenciler" styleClass="top20">
+				<h:form id="izinlerForm">
+				
+				<p:dataTable var="row" value="#{tatilBean.izniGecenOgrenciler()}">
+				<p:column headerText="Ad">
+				#{row.ogrenciAd} 
+				</p:column>
+				<p:column headerText="Soyad">
+				#{row.ogrenciSoyad} 
+				</p:column>
+				<p:column headerText="TC">
+				#{row.ogrenciTc} 
+				</p:column>
+				<p:column headerText="Cep No">
+				#{row.ogrenciCepNo} 
+				</p:column>
+			 
+				</p:dataTable>
+			
+				</h:form>
+			</p:panel>
+			
+			
+			
+			
+			<p:panel header="İzinde Olan Öğrenciler" styleClass="top20">
+				<h:form id="izinlerForm2">
+				
+				<p:dataTable var="row" value="#{tatilBean.izindeOlanOgrenciler()}">
+				<p:column headerText="Ad">
+				#{row.ogrenciAd} 
+				</p:column>
+				<p:column headerText="Soyad">
+				#{row.ogrenciSoyad} 
+				</p:column>
+				<p:column headerText="TC">
+				#{row.ogrenciTc} 
+				</p:column>
+				<p:column headerText="Cep No">
+				#{row.ogrenciCepNo} 
+				</p:column>
+			 	<p:column headerText="İşlem">
+			 	<p:commandButton value="Giriş Yaptı" icon="ui-icon-star" action="#{tatilBean.izindenDonenOgrenci()}" update="izinlerForm2" >
+			 	<f:param value="#{row.ogrenciId}" name="ogrenciId" />
+			 	</p:commandButton>
+			 	</p:column>
+				</p:dataTable>
+			
+				</h:form>
+			</p:panel>
+
+		
+	 
+		
+		
+		</ui:define>
+</ui:composition>
+		
+
+</body> 
+</html>

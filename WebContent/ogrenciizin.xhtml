@@ -14,7 +14,7 @@
 
 		<ui:define name="title">Ogrenci Takip otomasyonu</ui:define>
 		<ui:define name="icerik">
-		<h:form>
+		<h:form id="izinForm">
 	 	<p:panel header="İzin Talep Formu" styleClass="top20">
 			 	
 	
@@ -43,21 +43,21 @@
  					
  					
  					 <p:outputLabel for="mask1" value="Gidiş Tarihi:" />
-       				 <p:calendar id="mask1" value="#{tatilBean.uGidisTarih}" pattern="dd/MM/yyyy" mask="true" />
+       				 <p:calendar id="mask1" value="#{tatilBean.uGidisTarih}" pattern="dd/MM/yyyy" mask="true" required="true" />
  
   					<p:outputLabel for="mask2" value="Dönüş Tarihi:" />
-       				 <p:calendar id="mask2" value="#{tatilBean.uDonusTarih}" pattern="dd/MM/yyyy" mask="true" />
+       				 <p:calendar id="mask2" value="#{tatilBean.uDonusTarih}" pattern="dd/MM/yyyy" mask="true" required="true" />
  
-					<p:outputLabel value="İzin Adresi:"/>
-					<p:inputTextarea value="#{tatilBean.izinAdresi}" cols="23"/>
+					<p:outputLabel for="adres" value="İzin Adresi:"/>
+					<p:inputTextarea  id="adres" value="#{tatilBean.izinAdresi}" cols="23" required="true" />
 					
 					<p:outputLabel />
-					<p:commandButton value="İZİN OLUŞTUR"  action="#{tatilBean.izinTalep()}" />
+					<p:commandButton value="İZİN OLUŞTUR"  action="#{tatilBean.izinTalep()}" update="izinForm"/>
 					
 					
  			
 			 </p:panelGrid>
-			 
+			 <p:messages/>
 		</p:panel>
 	</h:form>
 		</ui:define>

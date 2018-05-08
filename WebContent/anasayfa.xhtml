@@ -27,27 +27,6 @@
 		</p:panel>
 		
 		
-			
-	
-			<p:panel header="İzni Geçen Öğrenciler" styleClass="top20">
-				<h:form id="izinlerForm">
-					<ui:repeat var="row" value="#{tatilBean.izniGecenOgrenciler()}">
-			 			#{row.ogrenciAd}  	#{row.ogrenciSoyad}   #{row.ogrenciCepNo} 
-			 			<p:commandButton value="TIKLA">
-			 			<p:ajax  event="click" listener="#{tatilBean.deneme()}"/>
-			 			</p:commandButton>
-					<p:separator />	
-					</ui:repeat>
-				</h:form>
-			</p:panel>
-
-		
-		
-		
-		<p:panel header="Ödemesi Geçen Öğrenciler" styleClass="top20">
-			 
-		</p:panel>
-		
 		
 		
 		</ui:define>
