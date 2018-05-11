@@ -186,15 +186,8 @@ public class OdaBean {
 	public void odaGuncelle()
 	{
 		OdaBean oda =this;
-		boolean valid = OdaCRUD.odaGuncelle(oda);
-		if(valid)
-		{
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Oda Güncellendi."));
-		}
-		else
-		{
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Oda Güncellenemedi."));
-		}
+		String mesaj = OdaCRUD.odaGuncelle(oda);
+		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(mesaj));
 	}
 	
 }

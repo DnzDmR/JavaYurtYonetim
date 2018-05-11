@@ -113,7 +113,6 @@ public class YoneticiCRUD {
 	{
 		Connection conn =null;
 		CallableStatement cs =null;
-		
 		try {
 				conn=DatabaseConnection.getConnection();
 				cs=conn.prepareCall("{call YONETICIARAMA(?,?)}");

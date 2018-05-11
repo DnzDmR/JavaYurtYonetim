@@ -3,6 +3,7 @@ package com.deniz.model;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.deniz.connection.DatabaseConnection;
@@ -116,7 +117,6 @@ public class OgrenciCRUD {
 	{
 		Connection conn =null;
 		CallableStatement cs=null;
-		
 		try {
 			
 			conn=DatabaseConnection.getConnection();
@@ -233,7 +233,7 @@ public class OgrenciCRUD {
 			conn.close();
 			
 			return true;
-		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false;}
+		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); return false;}
 	}
 	
 	public static boolean ogrenciSil(int ogrenciId)

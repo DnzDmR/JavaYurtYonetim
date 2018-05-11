@@ -3,6 +3,7 @@ package com.deniz.model;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.deniz.connection.DatabaseConnection;
@@ -120,7 +121,7 @@ public class OdaCRUD {
 	
 	
 	
-	public static boolean odaGuncelle(OdaBean oda)
+	public static String odaGuncelle(OdaBean oda)
 	{
 		System.out.println(oda.getOdaKod());
 		System.out.println(oda.getOdaId());
@@ -140,8 +141,17 @@ public class OdaCRUD {
 			cs.close();
 			conn.close();
 		
-			return true;
-		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false;}
+			return "Oda Güncellendi";
+		}catch(SQLException e) {
+			if(e.getErrorCode()==20333)
+			{
+				return "Odada Kayıtlı Öğrenci Sayısı Yatak Sayısından Fazla";
+			}
+			else
+			{
+				return "Oda güncellenemedi";
+			}
+		}
 	}
 	
 	

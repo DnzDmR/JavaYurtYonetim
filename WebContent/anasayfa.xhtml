@@ -26,7 +26,23 @@
 			</p:panelGrid>
 		</p:panel>
 		
-		
+	<p:panel header="Son 5 Giriş Hareketi" styleClass="top20">
+		<p:dataTable  var="row" value="#{girisBean.girisLogCek()}" styleClass="top20" chunkSize="5">
+  			
+  			<p:column headerText="Ad" >
+  			<p:outputLabel value="#{row.yoneticiAd}" />
+  			</p:column>	
+ 			<p:column headerText="Soyad" >
+  			<p:outputLabel value="#{row.yoneticiSoyad}" />
+  			</p:column>	
+ 	  		<p:column headerText="Tarih" >
+  			<p:outputLabel value="#{row.girisTarih}" />
+  			</p:column>	
+  			<p:column headerText="TC" >
+  			<p:outputLabel value="#{row.yoneticiTc}" />
+  			</p:column>	
+		</p:dataTable>
+	</p:panel>		
 		
 		
 		</ui:define>
