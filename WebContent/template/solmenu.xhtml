@@ -25,11 +25,11 @@
             <p:menuitem value="Öğrenci İzin" 	url="izinislemleri.jsf" icon="ui-icon-pencil"/>
             
          </p:submenu>
-        <p:submenu label="Yönetici">
+        <p:submenu label="Yönetici" rendered="#{yoneticiBean.yoneticiYetkiGetir()==1}">
             <p:menuitem value="Yönetici Kayıt" 	 url="yoneticikayit.jsf" icon="ui-icon-disk"/>
             <p:menuitem value="Yönetici Listele" url="yoneticilistele.jsf" icon="ui-icon-pencil"/>
         </p:submenu>
-         <p:submenu label="Oda İşlemleri">
+         <p:submenu label="Oda İşlemleri" rendered="#{yoneticiBean.yoneticiYetkiGetir()==1}">
             <p:menuitem value="Oda Ekle" 	url="odaekle.jsf" icon="ui-icon-star"/>
          	<p:menuitem value="Oda Listele" url="odalistele.jsf" icon="ui-icon-home"/>
          </p:submenu>

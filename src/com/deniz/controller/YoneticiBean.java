@@ -359,7 +359,11 @@ public class YoneticiBean {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Yönetici Güncellenemedi."));
 			}
 	}
-	
+	public int yoneticiYetkiGetir()
+	{
+		YoneticiBean yonetici = YoneticiCRUD.yoneticiCek(Long.parseLong(YonetimSession.getYoneticiTc()));
+		return yonetici.getYoneticiYetki();
+	}
 	
 	
 	

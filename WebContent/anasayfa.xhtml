@@ -26,7 +26,7 @@
 			</p:panelGrid>
 		</p:panel>
 		
-	<p:panel header="Son 5 Giriş Hareketi" styleClass="top20">
+	<p:panel header="Son 5 Giriş Hareketi" styleClass="top20" rendered="#{yoneticiBean.yoneticiYetkiGetir()==1}">
 		<p:dataTable  var="row" value="#{girisBean.girisLogCek()}" styleClass="top20" chunkSize="5">
   			
   			<p:column headerText="Ad" >

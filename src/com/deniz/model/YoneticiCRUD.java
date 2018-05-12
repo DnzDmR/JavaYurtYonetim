@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.deniz.connection.DatabaseConnection;
 import com.deniz.controller.OdaBean;
 import com.deniz.controller.YoneticiBean;
+import com.deniz.session.YonetimSession;
 
 import oracle.jdbc.OracleTypes;
 
@@ -231,6 +232,7 @@ public class YoneticiCRUD {
 			return true;
 		}catch(Exception e) {System.out.println("hata-->"+e.getMessage()); e.printStackTrace(); return false;}
 	}
+	
 	 
 
 }
