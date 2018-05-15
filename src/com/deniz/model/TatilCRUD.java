@@ -3,6 +3,7 @@ package com.deniz.model;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.deniz.connection.DatabaseConnection;
@@ -12,7 +13,7 @@ import oracle.jdbc.OracleTypes;
 
 public class TatilCRUD {
 	
-	public static boolean izinTalep(TatilBean izin)
+	public static String izinTalep(TatilBean izin)
 	{
 		Connection conn=null;
 		CallableStatement cs =null;
@@ -31,15 +32,26 @@ public class TatilCRUD {
 			{
 				conn.close();
 				cs.close();
-				return false;
+				return "code1" ; // ÖĞRENCİ İZNİ BULUNAMADI
 			} 
 			
 			conn.close();
 			cs.close();
-			return true;
+			return "code2";  //ÖĞRENCİ İZNİ BAŞARILI 
 			
 			
-		}catch(Exception e) {System.out.println("hata->>"+e.getMessage()); e.printStackTrace(); return false; }
+		}catch(SQLException e) {
+			
+			if(e.getErrorCode()==20334)
+			{
+				return "code3"; // ÖĞRENCİ ŞUAN İZİNLİ
+			}
+			else
+			{
+				return "code4"; // ÖĞRENCİ İZNİ BAŞARISIZ
+			}
+		}
+		
 	}
 	
 	

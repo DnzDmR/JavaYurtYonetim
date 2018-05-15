@@ -142,15 +142,23 @@ public class TatilBean {
 		 this.donusTarih=sqlDate2;
 		 
 		 TatilBean izin =this;
-		 boolean valid =TatilCRUD.izinTalep(izin);
+		 String valid =TatilCRUD.izinTalep(izin);
 		 
-		 if(valid)
+		 if (valid.equals("code1"))
 		 {
-			 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("İzin Oluşturuldu."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Öğrenci izni yapılamadı."));
+		 }
+		 else if(valid.equals("code2"))
+		 {
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Öğrenci izni başarılı."));
+		 }
+		 else if(valid.equals("code3"))
+		 {
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Öğrenci şuan izinli görünmektedir"));
 		 }
 		 else
 		 {
-			 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("İzin oluşturulamadı."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Öğrenci izni yapılamadı."));
 		 }
 		 
 	}
