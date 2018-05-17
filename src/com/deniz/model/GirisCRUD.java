@@ -3,6 +3,8 @@ package com.deniz.model;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import com.deniz.connection.DatabaseConnection;
@@ -30,7 +32,7 @@ public class GirisCRUD {
 				GirisBean giris = new GirisBean();
 				giris.setYoneticiAd(rs.getString("YONETICI_AD"));
 				giris.setYoneticiSoyad(rs.getString("YONETICI_SOYAD"));
-				giris.setYoneticiTc(rs.getInt("YONETICI_TC"));
+				giris.setYoneticiTc(rs.getLong("YONETICI_TC"));
 				giris.setGirisTarih(rs.getTimestamp("GIRIS_TARIH"));
 				liste.add(giris);
 			}
@@ -38,7 +40,7 @@ public class GirisCRUD {
 			cs.close();
 			rs.close();
 			return liste;
-		} catch (Exception e) {System.out.println("hata--->"+e.getMessage());   return null;}
+		} catch (Exception e) {System.out.println("hata--->"+e.getMessage()); e.printStackTrace();   return null;}
 		
 	}
 

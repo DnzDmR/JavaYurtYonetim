@@ -31,15 +31,14 @@
 				<p:inputText id="ySoyad" value="#{yoneticiBean.yoneticiSoyad}" required="true" requiredMessage="Soyad boş geçilemez." />
 			
 				<p:outputLabel for="adres"  value="Yönetici Adres"/>
-				<p:inputText value="#{yoneticiBean.yoneticiAdres}" id="adres" required="true" requiredMessage="Adres boş geçilemez."/>
-				
+				<p:inputTextarea value="#{yoneticiBean.yoneticiAdres}" id="adres" maxlength="50"  rows="1" cols="23" required="true" requiredMessage="Adres boş geçilemez." />
 				
 				 <p:outputLabel for="mask" value="Doğum Tarihi" />
        			 <p:calendar value="#{yoneticiBean.tarih}" id="mask"  pattern="dd/MM/yyyy" mask="true" required="true" requiredMessage="Doğum tarihi boş geçilemez" />
 			
 			
 				<p:outputLabel for="yCepNo" value="Yönetici Cep No"/>
-				<p:inputText id="yCepNo" value="#{yoneticiBean.yoneticiCepNo}" required="true" requiredMessage="Cep No Boş geçilemez" > 
+				<p:inputText id="yCepNo" value="#{yoneticiBean.yoneticiCepNo}" maxlength="11" required="true" requiredMessage="Cep No Boş geçilemez" > 
 				<p:keyFilter regEx="/[\d]/"/>
 				</p:inputText>
 				

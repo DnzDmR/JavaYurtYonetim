@@ -24,11 +24,11 @@ public class YoneticiCRUD {
 			cs=conn.prepareCall("{call YONETICIGIRIS(?,?,?)}");
 			cs.setLong(1, yoneticiTc);
 			cs.setString(2, yoneticiSifre);
-			cs.registerOutParameter(3, OracleTypes.CURSOR);
+			cs.registerOutParameter(3, OracleTypes.INTEGER);
 			cs.executeQuery();
-			ResultSet rs = (ResultSet) cs.getObject(3);
+			int adet =(int) cs.getObject(3);
 			
-			if(rs.next())
+			if(adet>0)
 			{
 				cs.close();
 				conn.close();
@@ -41,7 +41,7 @@ public class YoneticiCRUD {
 				return "yok";
 			}
 			
-		}catch(Exception e) {System.out.println("hata-->>>> "+e.getMessage()); return "hata"; }
+		}catch(Exception e) {System.out.println("hata-->>>> "+e.getMessage()); e.printStackTrace(); return "hata"; }
 		
  	}
 	

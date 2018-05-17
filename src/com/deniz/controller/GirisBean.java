@@ -1,6 +1,5 @@
 package com.deniz.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -12,7 +11,7 @@ public class GirisBean {
 	
 	private int girisId;
 	private java.sql.Timestamp girisTarih;
-	private int yoneticiTc;
+	private Long yoneticiTc;
 	private String yoneticiAd;
 	private String yoneticiSoyad;
 	
@@ -28,10 +27,10 @@ public class GirisBean {
 	public void setGirisTarih(java.sql.Timestamp girisTarih) {
 		this.girisTarih = girisTarih;
 	}
-	public int getYoneticiTc() {
+	public Long getYoneticiTc() {
 		return yoneticiTc;
 	}
-	public void setYoneticiTc(int yoneticiTc) {
+	public void setYoneticiTc(Long yoneticiTc) {
 		this.yoneticiTc = yoneticiTc;
 	}
 	public String getYoneticiAd() {
